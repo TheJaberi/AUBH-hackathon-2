@@ -1,0 +1,192 @@
+.learning-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.learning-content h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  line-height: 1.6;
+}
+
+.description.dark {
+  color: #94a3b8;
+}
+
+.description.light {
+  color: #64748b;
+}
+
+.path-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.path-card {
+  padding: 2rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.path-card.dark {
+  background-color: #162036;
+  color: #f8fafc;
+}
+
+.path-card.light {
+  background-color: white;
+  color: #1e293b;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.path-card:hover {
+  transform: translateY(-5px);
+}
+
+.path-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.path-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #38bdf8;
+}
+
+.path-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.path-details span {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  background-color: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+}
+
+.topics h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #38bdf8;
+}
+
+.topics ul {
+  list-style: none;
+  padding: 0;
+}
+
+.topics li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.topics li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #38bdf8;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 3rem;
+  border-radius: 1rem;
+  margin-top: 4rem;
+}
+
+.cta-section.dark {
+  background-color: #162036;
+}
+
+.cta-section.light {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #38bdf8;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #38bdf8;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0ea5e9;
+}
+
+.btn-secondary.dark {
+  background-color: transparent;
+  color: white;
+  border: 2px solid #38bdf8;
+}
+
+.btn-secondary.light {
+  background-color: transparent;
+  color: #1e293b;
+  border: 2px solid #38bdf8;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(56, 189, 248, 0.1);
+}
+
+@media (max-width: 768px) {
+  .learning-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .path-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-section h2 {
+    font-size: 1.75rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+}

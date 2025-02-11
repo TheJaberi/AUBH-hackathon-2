@@ -1,0 +1,28 @@
+.welcome-container {
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  transition: all 0.3s ease;
+}
+
+.welcome-container.dark {
+  background-color: #1e2a47;
+  color: white;
+}
+
+.welcome-container.light {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
