@@ -2,7 +2,18 @@
 .greeting-container {
     width: 100%;
     max-width: 800px;
-    margin: 0 100%;
+    margin: 0 auto 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.greeting-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .greeting-header {
@@ -18,31 +29,59 @@
 }
 
 h1 {
-    color: #ffffff;
     font-size: 32px;
     font-weight: normal;
     margin: 0;
 }
 
+.welcome-container.dark h1 {
+    color: #ffffff;
+}
+
+.welcome-container.light h1 {
+    color: #1e293b;
+}
+
 .greeting-input-container {
-    width: 400px;
-    background-color: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
     border-radius: 12px;
     padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.welcome-container.dark .greeting-input-container {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.welcome-container.light .greeting-input-container {
+    background-color: rgba(30, 41, 59, 0.05);
 }
 
 .greeting-input {
     width: 100%;
     background-color: transparent;
     border: none;
-    color: #ffffff;
     font-size: 16px;
     padding: 8px 0;
     margin-bottom: 16px;
 }
 
-.greeting-input::placeholder {
+.welcome-container.dark .greeting-input {
+    color: #ffffff;
+}
+
+.welcome-container.light .greeting-input {
+    color: #1e293b;
+}
+
+.welcome-container.dark .greeting-input::placeholder {
     color: rgba(255, 255, 255, 0.6);
+}
+
+.welcome-container.light .greeting-input::placeholder {
+    color: rgba(30, 41, 59, 0.6);
 }
 
 .greeting-input:focus {
@@ -54,31 +93,79 @@ h1 {
     justify-content: space-between;
     align-items: center;
     padding-top: 8px;
+    transition: all 0.3s ease;
+}
+
+.welcome-container.dark .greeting-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.welcome-container.light .greeting-footer {
+    border-top: 1px solid rgba(30, 41, 59, 0.1);
+}
+
 .model-name {
-    color: rgba(255, 255, 255, 0.6);
     font-size: 14px;
+}
+
+.welcome-container.dark .model-name {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.welcome-container.light .model-name {
+    color: rgba(30, 41, 59, 0.6);
 }
 
 .style-button {
     background-color: transparent;
     border: none;
-    color: rgba(255, 255, 255, 0.6);
     font-size: 14px;
     display: flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
     padding: 4px 8px;
+    transition: all 0.3s ease;
+}
+
+.welcome-container.dark .style-button {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.welcome-container.light .style-button {
+    color: rgba(30, 41, 59, 0.6);
 }
 
 .chevron-down {
     font-size: 10px;
 }
 
-.style-selector:hover {
+.welcome-container.dark .style-selector:hover {
     border-radius: 3px;
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+.welcome-container.light .style-selector:hover {
+    border-radius: 3px;
+    background-color: rgba(30, 41, 59, 0.1);
+}
+
+@media (max-width: 768px) {
+    .greeting-input-container {
+        width: 100%;
+    }
+    
+    .greeting-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    .star-icon {
+        font-size: 36px;
+    }
 }

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '../../context/ThemeContext';
+import Greeting from '../../components/claudeUI/claudeUI';
+import NameInput from '../../components/NameInput/NameInput';
 import './Learning.css';
 
 const learningPaths = [
@@ -35,9 +37,27 @@ const learningPaths = [
 
 const Learning: React.FC = () => {
   const { isDark } = useTheme();
+  const [userName, setUserName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedName = localStorage.getItem('userName');
+    if (storedName) {
+      setUserName(storedName);
+    }
+  }, []);
+
+  const handleNameSubmit = (name: string) => {
+    localStorage.setItem('userName', name);
+    setUserName(name);
+  };
+
+  if (!userName) {
+    return <NameInput onSubmit={handleNameSubmit} />;
+  }
 
   return (
     <div className="learning-content">
+      <Greeting username={userName} />
       <h1>Learning Paths</h1>
       <p className={`description ${isDark ? 'dark' : 'light'}`}>
         Choose your AI learning journey from our carefully crafted paths. Each path is designed 

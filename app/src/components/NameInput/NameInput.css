@@ -1,0 +1,107 @@
+.name-input-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.name-input-modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: modalEnter 0.3s ease-out;
+}
+
+.name-input-modal.dark {
+  background-color: #162036;
+  color: white;
+}
+
+.name-input-modal.light {
+  background-color: white;
+  color: #1e293b;
+}
+
+.name-input-modal h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #38bdf8;
+}
+
+.name-input-modal p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.name-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  background-color: white;
+  color: #1e293b;
+}
+
+.name-input.dark {
+  background-color: #1e293b;
+  border-color: #2d3748;
+  color: white;
+}
+
+.name-input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.name-input-modal .btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.name-input-modal .btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .name-input-modal {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .name-input-modal h2 {
+    font-size: 1.5rem;
+  }
+
+  .name-input {
+    padding: 0.8rem;
+  }
+}
