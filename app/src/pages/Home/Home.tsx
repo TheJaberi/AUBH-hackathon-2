@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
+import Fly from '../../components/Fly/Fly';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -7,6 +8,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="main-content">
+      <Fly isDark={isDark} />
       <h1>Welcome to AI Learning</h1>
       <p className={`subtitle ${isDark ? 'dark' : 'light'}`}>
         Discover the fascinating world of artificial intelligence through our interactive learning platform
