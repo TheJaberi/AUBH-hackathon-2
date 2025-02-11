@@ -8,37 +8,38 @@ const WelcomePage = () => {
     setIsDark(!isDark);
   };
 
-  return React.createElement('div', { className: `welcome-container ${isDark ? 'dark' : 'light'}` },
-    React.createElement('nav', { className: `nav-bar ${isDark ? 'dark' : 'light'}` },
-      React.createElement('div', { className: 'logo' }, 'AI Learning'),
-      React.createElement('div', { className: `nav-links ${isDark ? 'dark' : 'light'}` },
-        React.createElement('a', { href: '#home' }, 'Home'),
-        React.createElement('a', { href: '#courses' }, 'Courses'),
-        React.createElement('a', { href: '#about' }, 'About'),
-        React.createElement('a', { href: '#contact' }, 'Contact'),
-        React.createElement('button', {
-          className: 'theme-toggle',
-          onClick: toggleTheme
-        }, isDark ? '☀️' : '🌙')
-      )
-    ),
-    React.createElement('div', { className: 'main-content' },
-      React.createElement('h1', null, 'Welcome to AI Learning'),
-      React.createElement('p', { className: `subtitle ${isDark ? 'dark' : 'light'}` },
-        'Discover the fascinating world of artificial intelligence through our interactive learning platform'
-      ),
-      React.createElement('div', { className: 'circle-grid' },
-        ['🏠', '📚', '⚙️', '👤', '📖', '🔧'].map((emoji, index) =>
-          React.createElement('div', { className: 'circle-item', key: index },
-            React.createElement('div', { className: `circle circle-${index + 1}` }, emoji)
-          )
-        )
-      ),
-      React.createElement('div', { className: 'button-group' },
-        React.createElement('button', { className: 'btn btn-primary' }, 'Get Started'),
-        React.createElement('button', { className: `btn btn-secondary ${isDark ? 'dark' : 'light'}` }, 'Learn More')
-      )
-    )
+  return (
+    <div className={`welcome-container ${isDark ? 'dark' : 'light'}`}>
+      <nav className={`nav-bar ${isDark ? 'dark' : 'light'}`}>
+        <div className="logo">AI Learning</div>
+        <div className={`nav-links ${isDark ? 'dark' : 'light'}`}>
+          <a href="#home">Home</a>
+          <a href="#courses">Courses</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <button className="theme-toggle" onClick={toggleTheme}>
+            {isDark ? '☀️' : '🌙'}
+          </button>
+        </div>
+      </nav>
+      <div className="main-content">
+        <h1>Welcome to AI Learning</h1>
+        <p className={`subtitle ${isDark ? 'dark' : 'light'}`}>
+          Discover the fascinating world of artificial intelligence through our interactive learning platform
+        </p>
+        <div className="circle-grid">
+          {['🏠', '📚', '⚙️', '👤', '📖', '🔧'].map((emoji, index) => (
+            <div className="circle-item" key={index}>
+              <div className={`circle circle-${index + 1}`}>{emoji}</div>
+            </div>
+          ))}
+        </div>
+        <div className="button-group">
+          <button className="btn btn-primary">Get Started</button>
+          <button className={`btn btn-secondary ${isDark ? 'dark' : 'light'}`}>Learn More</button>
+        </div>
+      </div>
+    </div>
   );
 };
 
