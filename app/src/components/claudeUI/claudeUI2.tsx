@@ -41,11 +41,11 @@ export const ClaudiInputWithOutput: React.FC<ClaudeInputProps> = ({ username, pr
                         <span className="model-name">Claude 3.5 Sonnet</span>
                         <div className="style-selector flex flex-row">
                             <button className="style-button" onClick={() => { checkAnswer('safe') }}>
-                                Send
+                                Biased
                                 <IconLucideArrowUp />
                             </button>
                             <button className='style-button' onClick={() => { checkAnswer('unsafe') }}>
-                                Reject
+                                Not Biased
                                 <X />
                             </button>
                         </div>
