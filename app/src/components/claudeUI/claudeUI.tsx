@@ -9,7 +9,7 @@ interface ClaudeInputProps {
   checkAnswer: (selected: string) => void;
 }
 
-export const ClaudiInput: React.FC<ClaudeInputProps> = ({ username, prompt, checkAnswer }) => {
+export const ClaudeInput: React.FC<ClaudeInputProps> = ({ username, prompt, checkAnswer }) => {
   return (
     <div className="claude-container">
       <div className="claude-content">
@@ -32,7 +32,7 @@ export const ClaudiInput: React.FC<ClaudeInputProps> = ({ username, prompt, chec
                 <IconLucideArrowUp/>
               </button>
               <button className='style-button' onClick={()=>{checkAnswer('unsafe')}}>
-                Reject
+                Discard
                 <X />
               </button>
             </div>

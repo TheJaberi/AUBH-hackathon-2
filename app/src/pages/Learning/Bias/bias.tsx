@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ClaudiInputWithOutput }  from '../../../components/claudeUI/claudeUI2';
+import { ClaudiInputWithOutput } from '../../../components/claudeUI/claudeUI2';
 import { BiasQuestions } from '../../../questions/questions';
-import { Alert } from '../../../components/alert/Alert';
+import { AlertModal } from '../../../components/alert/Alert';
+// import { AlertModal } from '../../../components/alert/Alert';
 
 
 const BiasFlow: React.FC = () => {
@@ -9,6 +10,7 @@ const BiasFlow: React.FC = () => {
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
   const [alertType, setAlertType] = useState<'success' | 'error' | null>(null);
   const [username, setUserName] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setUserName(localStorage.getItem('userName'));
@@ -24,7 +26,12 @@ const BiasFlow: React.FC = () => {
   };
 
   const checkAnswer = (selected: string) => {
+
     const currentQuestion = BiasQuestions[currentIndex];
+
+    // open the alert modal for feedback
+    setIsOpen(true);
+
     // Check if this is the last question.
     if (currentIndex === BiasQuestions.length - 1) {
       if (currentQuestion.solution.toLowerCase() === selected.toLowerCase()) {
@@ -56,16 +63,12 @@ const BiasFlow: React.FC = () => {
         checkAnswer={checkAnswer}
       />
       {alertMessage && alertType && (
-        <Alert
-          message={alertMessage}
-          type={alertType}
-          onClose={() => {
-            setAlertMessage(null);
-            setAlertType(null);
-            goNext();
-          }}
-          btnText={currentIndex === BiasQuestions.length - 1 ? "Go Next" : "Close"}
-        />
+        <AlertModal
+          isOpen={isOpen}
+          onClose={() => { setIsOpen(false); setAlertMessage(null); setAlertType(null); goNext(); }}
+          type="success"
+          message="Operation completed successfully!"
+          btnText={currentIndex === BiasQuestions.length - 1 ? "Go Next" : "Close"} />
       )}
     </div>
   );
