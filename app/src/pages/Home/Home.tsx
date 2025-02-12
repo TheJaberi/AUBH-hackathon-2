@@ -17,10 +17,10 @@ const Home: React.FC = () => {
   const { isDark } = useTheme();
 
   const topics = [
-    { title: 'Privacy & Security', description: 'Learn how AI handles data securely and maintains privacy.' },
-    { title: 'Bias', description: 'Understand bias in AI systems and how to address it effectively.' },
-    { title: 'Manipulation', description: 'Discover how AI can influence decisions and the ethical concerns.' },
-    { title: 'Case Studies', description: 'Explore real-world examples of AI applications and their impact.' }
+    { title: 'S.Hesham Hussain', description: '' },
+    { title: 'Adnan Jabri', description: '' },
+    { title: 'Yousif Jawad', description: '' },
+    { title: 'Reem Alhalwachi', description: '' }
   ];
 
   return (
