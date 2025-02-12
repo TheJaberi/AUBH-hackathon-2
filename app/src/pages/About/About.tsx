@@ -1,5 +1,9 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
+import man1 from '../../assets/man1.jpg';
+import man2 from '../../assets/man2.jpg';
+import man3 from '../../assets/man3.jpg';
+import girl1 from '../../assets/girl1.jpg';
 import './About.css';
 
 const About: React.FC = () => {
@@ -7,6 +11,47 @@ const About: React.FC = () => {
 
   return (
     <div className="about-content">
+      <section className="our-team-section">
+        <h2>Our Team</h2>
+        <div className="card-container">
+          <div className="card card-square">
+            <img src={man1} alt="Team Member 1" />
+          </div>
+          <div className="card card-rectangle">
+            <div className="card-content">
+              <h3>Team Member 1</h3>
+              <p>Role and description for team member 1.</p>
+            </div>
+          </div>
+          <div className="card card-square">
+            <img src={man2} alt="Team Member 2" />
+          </div>
+          <div className="card card-rectangle">
+            <div className="card-content">
+              <h3>Team Member 2</h3>
+              <p>Role and description for team member 2.</p>
+            </div>
+          </div>
+          <div className="card card-square">
+            <img src={man3} alt="Team Member 3" />
+          </div>
+          <div className="card card-rectangle">
+            <div className="card-content">
+              <h3>Team Member 3</h3>
+              <p>Role and description for team member 3.</p>
+            </div>
+          </div>
+          <div className="card card-square">
+            <img src={girl1} alt="Team Member 4" />
+          </div>
+          <div className="card card-rectangle">
+            <div className="card-content">
+              <h3>Team Member 4</h3>
+              <p>Role and description for team member 4.</p>
+            </div>
+          </div>
+        </div>
+      </section>
       <h1>About AI Learning</h1>
       <div className={`about-section ${isDark ? 'dark' : 'light'}`}>
         <h2>Our Mission</h2>
