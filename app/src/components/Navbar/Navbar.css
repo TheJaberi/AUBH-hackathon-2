@@ -28,6 +28,19 @@
   font-weight: bold;
 }
 
+.navbar-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #38bdf8;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(90deg, #38bdf8, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  flex-grow: 1;
+}
+
 .nav-links {
   display: flex;
   gap: 2rem;
