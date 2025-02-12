@@ -1,111 +1,258 @@
-.main-content {
+/* --- Home Page Main Content --- */
+.home-main-content {
   max-width: 1200px;
   margin: 0 auto;
   padding: 4rem 2rem;
   text-align: center;
+  position: relative;
 }
 
-h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
+/* --- Hero Section (Scoped to Home Only) --- */
+.home-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, #38bdf8, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: home-glow 2s infinite alternate;
+  transition: all 0.5s ease-in-out;
 }
 
-.subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 4rem;
-  max-width: 800px;
-  margin: 0 auto 4rem auto;
+@keyframes home-glow {
+  from {
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.7);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(56, 189, 248, 1);
+  }
 }
 
-.subtitle.dark {
+/* --- Subtitle (Scoped) --- */
+.home-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  color: #cbd5e1;
+  transition: color 0.5s ease;
+}
+
+.home-subtitle.dark {
   color: #94a3b8;
 }
 
-.subtitle.light {
+.home-subtitle.light {
   color: #64748b;
 }
 
-.circle-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
-  max-width: 800px;
-  margin: 0 auto 4rem auto;
-  justify-content: center;
+/* --- Persistent Scroll Animation (Always Active) --- */
+.home-fade-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-in-out;
+  will-change: opacity, transform;
 }
 
-.circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+.home-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Placeholder Image Section (Glassmorphism) --- */
+.home-image-placeholder {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 3rem;
+  margin: 2rem auto;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  max-width: 80%;
+  color: #e2e8f0;
   font-size: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-.circle:hover {
-  transform: scale(1.1);
+.home-image-placeholder:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
 }
 
-.circle-1 { background-color: #f97316; }
-.circle-2 { background-color: #38bdf8; }
-.circle-3 { background-color: #22c55e; }
-.circle-4 { background-color: #a855f7; }
-.circle-5 { background-color: #ec4899; }
-.circle-6 { background-color: #3b82f6; }
+/* --- Description Styling (Scoped) --- */
+.home-description {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  margin: 1rem 0 3rem;
+  transition: color 0.4s ease-in-out;
+}
 
-.button-group {
+.home-description.dark {
+  color: #94a3b8;
+}
+
+.home-description.light {
+  color: #374151;
+}
+
+/* --- Button Group with Cool Hover Effects (Scoped) --- */
+.home-button-group {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
   margin-top: 2rem;
 }
 
-.btn {
+.home-btn {
   padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
+  border-radius: 50px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   border: none;
   font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.btn-primary {
-  background-color: #38bdf8;
+.home-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #9333ea);
+  z-index: -1;
+  transition: transform 0.4s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.home-btn:hover::before {
+  transform: scaleX(1);
+}
+
+/* --- Video Placeholder Section --- */
+.video-holder {
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 0.5rem;
+  border: 4px solid #a9a9a9;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d3d3d3, #b0b0b0, #d3d3d3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.video-holder:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.video-content {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  outline: none;
+  background-color: black;
+  transition: transform 0.3s ease-in-out;
+}
+
+.video-content:hover {
+  transform: scale(1.01);
+}
+
+/* --- Topic Cards Section --- */
+.topic-cards-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 800px; /* Adjusted for better centering */
+  margin: 0 auto;
+  overflow: hidden;
+  justify-items: center; /* Center cards horizontally */
+}
+
+/* --- Topic Card Design --- */
+.topic-card {
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
   color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+
+  height: 350px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
 }
 
-.btn-primary:hover {
-  background-color: #0ea5e9;
+/* --- Card Content --- */
+.topic-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
 }
 
-.btn-secondary.dark {
-  background-color: transparent;
-  color: white;
-  border: 2px solid #38bdf8;
+.topic-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #e0e7ff;
+  padding: 0 1rem;
 }
 
-.btn-secondary.light {
-  background-color: transparent;
-  color: #1e293b;
-  border: 2px solid #38bdf8;
+/* --- Slide Animations --- */
+.topic-card.slide-from-left {
+  transform: translateX(-100vw); /* Slide from left */
 }
 
-.btn-secondary:hover {
-  background-color: rgba(56, 189, 248, 0.1);
+.topic-card.slide-from-right {
+  transform: translateX(100vw); /* Slide from right */
 }
 
+.topic-card.visible {
+  opacity: 1;
+  transform: translateX(0); /* Settle into place */
+}
+
+/* --- Responsive Design for Mobile --- */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
+  .topic-cards-section {
+    grid-template-columns: 1fr; /* Stack cards vertically */
+    gap: 1.5rem;
+    padding: 1rem;
+    align-items: center;
   }
 
-  .circle-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .topic-card {
+    width: 90%;
+    max-width: 350px;
+    height: auto;
+    padding: 1.2rem;
+    transform: translateY(100vh); /* Slide from bottom on mobile */
+  }
+
+  .topic-card.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .topic-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .topic-card p {
+    font-size: 0.95rem;
   }
 }
