@@ -11,7 +11,7 @@ import man1 from '../../assets/man1.jpg';
 import man2 from '../../assets/man2.jpg';
 import man3 from '../../assets/man3.jpg';
 import girl1 from '../../assets/girl1.jpg';
-import logo from '../../assets/logo.jpg.jpg';
+// import logo from '../../assets/logo.jpg.jpg';
 import './Home.css';
 import './animations.css';
 
