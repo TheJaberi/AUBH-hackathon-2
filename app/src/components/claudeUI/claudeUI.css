@@ -50,7 +50,7 @@ h1 {
 }
 
 .claude-ai-input{
-    text-align: right;
+    background-color: rgba(54, 53, 53, 0.443);
     width: 100%;
     max-width: 400px;
     margin: 0 auto;

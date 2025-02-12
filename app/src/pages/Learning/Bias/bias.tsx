@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ClaudiInputWithOutput } from '../../../components/claudeUI/claudeUI2';
+import { ClaudeInputWithOutput } from '../../../components/claudeUI/claudeUI2';
 import { BiasQuestions } from '../../../questions/questions';
 import { AlertModal } from '../../../components/alert/Alert';
-// import { AlertModal } from '../../../components/alert/Alert';
-
 
 const BiasFlow: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,28 +9,43 @@ const BiasFlow: React.FC = () => {
   const [alertType, setAlertType] = useState<'success' | 'error' | null>(null);
   const [username, setUserName] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isFirstClick, setIsFirstClick] = useState(true);
 
   useEffect(() => {
     setUserName(localStorage.getItem('userName'));
+  }, []);
+
+  useEffect(() => {
+    setIsFirstClick(true);
+  }, [currentIndex]);
+
+  useEffect(() => {
+    setIsFirstClick(true);
   }, []);
 
   const goNext = () => {
     if (currentIndex < BiasQuestions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      // Add navigation to the next module here, e.g., using react-router.
       console.log("Module completed. Navigate to the next module.");
     }
   };
 
   const checkAnswer = (selected: string) => {
-
-    const currentQuestion = BiasQuestions[currentIndex];
-
-    // open the alert modal for feedback
+    console.log("we selected", selected)
+    if (isFirstClick) {
+      setIsFirstClick(false);
+    }
     setIsOpen(true);
 
-    // Check if this is the last question.
+    if (selected.trim() === "") {
+      console.log("we are emprty")
+      return;
+    }
+    const currentQuestion = BiasQuestions[currentIndex];
+
+
+
     if (currentIndex === BiasQuestions.length - 1) {
       if (currentQuestion.solution.toLowerCase() === selected.toLowerCase()) {
         setAlertMessage(
@@ -56,11 +69,12 @@ const BiasFlow: React.FC = () => {
 
   return (
     <div className="p-4">
-      <ClaudiInputWithOutput
+      <ClaudeInputWithOutput
         username={username || "Guest"}
         prompt={BiasQuestions[currentIndex].prompt}
         response={BiasQuestions[currentIndex].response}
         checkAnswer={checkAnswer}
+        isFirstClick={isFirstClick}
       />
       {alertMessage && alertType && (
         <AlertModal
