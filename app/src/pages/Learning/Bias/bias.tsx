@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Greeting from '../../../components/claudeUI/claudeUI';
-import { PrivacyQuestions } from '../../../questions/questions';
+import { BiasQuestions } from '../../../questions/questions';
 import { Alert } from '../../../components/alert/Alert';
 
-const PrivacyFlow: React.FC = () => {
+
+const BiasFlow: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
   const [alertType, setAlertType] = useState<'success' | 'error' | null>(null);
@@ -14,26 +15,26 @@ const PrivacyFlow: React.FC = () => {
   }, []);
 
   const goNext = () => {
-    if (currentIndex < PrivacyQuestions.length - 1) {
+    if (currentIndex < BiasQuestions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      // Here you can add navigation logic to the next module, e.g., using react-router.
+      // Add navigation to the next module here, e.g., using react-router.
       console.log("Module completed. Navigate to the next module.");
     }
   };
 
   const checkAnswer = (selected: string) => {
-    const currentQuestion = PrivacyQuestions[currentIndex];
+    const currentQuestion = BiasQuestions[currentIndex];
     // Check if this is the last question.
-    if (currentIndex === PrivacyQuestions.length - 1) {
+    if (currentIndex === BiasQuestions.length - 1) {
       if (currentQuestion.solution.toLowerCase() === selected.toLowerCase()) {
         setAlertMessage(
-          `Correct answer - ${currentQuestion.reason}. You completed the module Privacy, click Go Next to go to the next module`
+          `Correct answer - ${currentQuestion.reason}. You completed the module Bias, click Go Next to go to the next module`
         );
         setAlertType('success');
       } else {
         setAlertMessage(
-          `Incorrect answer - ${currentQuestion.reason}. You completed the module Privacy, click Go Next to go to the next module`
+          `Incorrect answer - ${currentQuestion.reason}. You completed the module Bias, click Go Next to go to the next module`
         );
         setAlertType('error');
       }
@@ -50,7 +51,7 @@ const PrivacyFlow: React.FC = () => {
     <div className="p-4">
       <Greeting
         username={username || "Guest"}
-        prompt={PrivacyQuestions[currentIndex].prompt}
+        prompt={BiasQuestions[currentIndex].prompt}
       />
       {alertMessage && alertType && (
         <Alert
@@ -61,19 +62,19 @@ const PrivacyFlow: React.FC = () => {
             setAlertType(null);
             goNext();
           }}
-          btnText={currentIndex === PrivacyQuestions.length - 1 ? "Go Next" : "Close"}
+          btnText={currentIndex === BiasQuestions.length - 1 ? "Go Next" : "Close"}
         />
       )}
       <div className="mt-4 flex justify-center gap-4">
         <button
           onClick={() => checkAnswer('safe')}
-          className="px-4 py-2 text-lg bg-white border border-gray-300 rounded hover:bg-gray-100 cursor-pointer"
+          className="px-4 py-2 text-lg bg-white text-black border border-gray-300 rounded hover:bg-gray-100 cursor-pointer"
         >
           Safe
         </button>
         <button
           onClick={() => checkAnswer('unsafe')}
-          className="px-4 py-2 text-lg bg-white border border-gray-300 rounded hover:bg-gray-100 cursor-pointer"
+          className="px-4 py-2 text-lg bg-white text-black border border-gray-300 rounded hover:bg-gray-100 cursor-pointer"
         >
           Unsafe
         </button>
@@ -82,4 +83,4 @@ const PrivacyFlow: React.FC = () => {
   );
 };
 
-export default PrivacyFlow;
+export default BiasFlow;
