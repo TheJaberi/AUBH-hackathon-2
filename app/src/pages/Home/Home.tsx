@@ -11,6 +11,7 @@ import man1 from '../../assets/man1.jpg';
 import man2 from '../../assets/man2.jpg';
 import man3 from '../../assets/man3.jpg';
 import girl1 from '../../assets/girl1.jpg';
+import logo from '../../assets/logo.jpg.jpg';
 import './Home.css';
 import './animations.css';
 
@@ -31,7 +32,6 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="hero-section">
         <div className={`content-wrap ${!isDark ? 'light' : ''}`}>
-          <h1 className="home-title">Welcome to GenRes</h1>
           <p className={`home-subtitle ${isDark ? 'dark' : 'light'}`}>
             Discover the fascinating world of artificial intelligence through our interactive learning platform.
           </p>
@@ -143,8 +143,9 @@ const Home: React.FC = () => {
         {topics.map((topic, index) => (
           <div key={index} className={`topic-card ${!isDark ? 'light' : ''}`}>
             <img src={index === 0 ? man1 : index === 1 ? man2 : index === 2 ? man3 : girl1} alt={topic.title} />
-            <h3>{topic.title}</h3>
-            <p>{topic.description}</p>
+            <div className="hover-content">
+              <h3>{topic.title}</h3>
+            </div>
           </div>
         ))}
       </section>
