@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './claudeUI.css';
 import { IconLucideArrowUp } from '../arrowUp/arrowUp';
 import { X } from 'lucide-react';
@@ -12,6 +12,10 @@ interface ClaudeInputProps {
 }
 
 export const ClaudiInputWithOutput: React.FC<ClaudeInputProps> = ({ username, prompt, response, checkAnswer, isFirstClick }) => {
+
+    const handleCheckAnswer = (selected: string) => {
+        checkAnswer(selected);
+    };
     return (
         <div className="claude-container">
             <div className="claude-content">
@@ -29,16 +33,18 @@ export const ClaudiInputWithOutput: React.FC<ClaudeInputProps> = ({ username, pr
                             {prompt}
                         </div>
                     </div>
-                    <div className="chat-row">
-                        <div className="claude-ai-input">
-                            {response}
-                        </div>
+                    <div className="chat-row claude-ai-chat-container">
+                        {!isFirstClick && (
+                            <div className="claude-ai-input">
+                                {response}
+                            </div>
+                        )}
                     </div>
 
                     <div className="claude-footer">
                         <span className="model-name">Claude 3.5 Sonnet</span>
                         <div className="style-selector flex flex-row">
-                            <button className="style-button" onClick={() => { checkAnswer(isFirstClick ? '' : 'safe') }}>
+                            <button className="style-button" onClick={() => { handleCheckAnswer(isFirstClick ? '' : 'safe') }}>
                                 {isFirstClick ? "Send" : "Biased"}
                                 <IconLucideArrowUp />
                             </button>
