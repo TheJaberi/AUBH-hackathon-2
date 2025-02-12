@@ -167,6 +167,25 @@
   overflow: hidden;
 }
 
+.showcase-image-placeholder img {
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.showcase-image-placeholder::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 80%;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  filter: blur(10px);
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
 .hover-content {
   position: absolute;
   bottom: 0;
@@ -182,6 +201,18 @@
   padding: 8rem 2rem;
   position: relative;
 }
+
+img[src*="man1.jpg"],
+img[src*="man2.jpg"],
+img[src*="man3.jpg"],
+img[src*="girl1.jpg"] {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: none;
+  border: none;
+}
+
 
 .circle-container {
   max-width: 1200px;
@@ -252,7 +283,6 @@
 }
 
 .topic-card {
-  background: linear-gradient(135deg, #4f46e5, #9333ea);
   color: white;
   padding: 1.5rem;
   border-radius: 15px;
@@ -354,4 +384,7 @@
   .topic-cards-section {
     grid-template-columns: 1fr;
   }
+}
+.circular-image{
+  border-radius: 9999px;
 }

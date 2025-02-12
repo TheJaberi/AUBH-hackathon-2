@@ -7,6 +7,10 @@ import privacy_security from '../../assets/privacy_security.png';
 import bias from '../../assets/bias.png';
 import manipulation from '../../assets/manipulation.png';
 import the_path from '../../assets/the_path.png';
+import man1 from '../../assets/man1.jpg';
+import man2 from '../../assets/man2.jpg';
+import man3 from '../../assets/man3.jpg';
+import girl1 from '../../assets/girl1.jpg';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -31,13 +35,6 @@ const Home: React.FC = () => {
             Discover the fascinating world of artificial intelligence through our interactive learning platform.
           </p>
 
-          <div className="video-holder">
-            <video autoPlay loop muted className="video-content">
-              <source src={robotVideo} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
           <div className="home-button-group">
             <button className={`home-btn home-btn-primary ${isDark ? '' : 'light'}`}>
               Get Started
@@ -45,6 +42,13 @@ const Home: React.FC = () => {
             <button className={`home-btn home-btn-secondary ${isDark ? 'dark' : 'light'}`}>
               Learn More
             </button>
+          </div>
+
+          <div className="video-holder">
+            <video autoPlay loop muted className="video-content">
+              <source src={robotVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
@@ -103,9 +107,9 @@ const Home: React.FC = () => {
         <div className="circle-container">
           <div className="circular-image-holder">
         <img src={the_path} alt="The Path" className="circular-image" />
-        <div className="rotating-text">
+        {/* <div className="rotating-text">
           <span>Interactive • Engaging • Modern • Innovative</span>
-        </div>
+        </div> */}
           </div>
           <div className="circular-content">
         <h2>Experience AI Learning</h2>
@@ -138,12 +142,13 @@ const Home: React.FC = () => {
 
       {/* Topic Cards Section */}
       <section className="topic-cards-section">
-        {topics.map((topic, index) => (
-          <div key={index} className="topic-card">
-            <h3>{topic.title}</h3>
-            <p>{topic.description}</p>
-          </div>
-        ))}
+{topics.map((topic, index) => (
+  <div key={index} className="topic-card">
+    <img src={index === 0 ? man1 : index === 1 ? man2 : index === 2 ? man3 : girl1} alt={topic.title} />
+    <h3>{topic.title}</h3>
+    <p>{topic.description}</p>
+  </div>
+))}
       </section>
 
       {/* Call to Action Section */}
