@@ -49,10 +49,19 @@ const PrivacyFlow: React.FC = () => {
 
   const checkAnswer = (selected: string) => {
     const currentQuestion = PrivacyQuestions[currentIndex];
-    // If this is the last level, always display the completion message.
+    // Check if this is the last question.
     if (currentIndex === PrivacyQuestions.length - 1) {
-      setAlertMessage("You completed the module Privacy, click Go Next to go to the next module");
-      setAlertType('success');
+      if (currentQuestion.solution.toLowerCase() === selected.toLowerCase()) {
+        setAlertMessage(
+          `Correct answer - ${currentQuestion.reason}. You completed the module Privacy, click Go Next to go to the next module`
+        );
+        setAlertType('success');
+      } else {
+        setAlertMessage(
+          `Incorrect answer - ${currentQuestion.reason}. You completed the module Privacy, click Go Next to go to the next module`
+        );
+        setAlertType('error');
+      }
     } else if (currentQuestion.solution.toLowerCase() === selected.toLowerCase()) {
       setAlertMessage(`Correct answer - ${currentQuestion.reason}`);
       setAlertType('success');

@@ -17,12 +17,10 @@ const Greeting: React.FC<GreetingProps> = ({ username, prompt }) => {
         </div>
         
         <div className="greeting-input-container">
-          <input 
-            type="text"
-            placeholder={prompt || "How can Claude help you today?"}
-            className="greeting-input"
-            disabled
-          />
+          <div className="greeting-input">
+            {prompt || "How can Claude help you today?"}
+          </div>
+
           
           <div className="greeting-footer">
             <span className="model-name">Claude 3.5 Sonnet</span>
