@@ -41,6 +41,7 @@ export const AlertModal: React.FC<AlertModalProps> = ({ message, type, onClose, 
             <button
               className="!absolute !top-[10px] !right-[10px] !inline-flex !h-[25px] !w-[25px] !appearance-none !items-center !justify-center !rounded-full !focus:outline-none"
               aria-label="Close"
+              onClick={onClose}
             >
               <X className={`${isDark ? '!text-gray-400' : '!text-gray-500'}`} />
             </button>
