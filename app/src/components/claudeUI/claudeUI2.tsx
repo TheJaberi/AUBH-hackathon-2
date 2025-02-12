@@ -33,19 +33,16 @@ export const ClaudiInputWithOutput: React.FC<ClaudeInputProps> = ({ username, pr
                         <div className="claude-ai-input">
                             {response}
                         </div>
-                        <div className="user-avatar">
-                            AI
-                        </div>
                     </div>
 
                     <div className="claude-footer">
                         <span className="model-name">Claude 3.5 Sonnet</span>
                         <div className="style-selector flex flex-row">
-                            <button className="style-button" onClick={() => { checkAnswer('safe') }}>
+                            <button className="style-button" onClick={() => { checkAnswer(isFirstClick ? '' : 'safe') }}>
                                 {isFirstClick ? "Send" : "Biased"}
                                 <IconLucideArrowUp />
                             </button>
-                            <button className='style-button' onClick={() => { checkAnswer('unsafe') }}>
+                            <button className='style-button' onClick={() => { checkAnswer(isFirstClick ? '' : 'unsafe') }}>
                                 {isFirstClick ? "Receive" : "Not Biased"}
                                 <X />
                             </button>

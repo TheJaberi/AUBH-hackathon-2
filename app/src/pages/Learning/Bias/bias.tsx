@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ClaudiInputWithOutput } from '../../../components/claudeUI/claudeUI2';
 import { BiasQuestions } from '../../../questions/questions';
 import { AlertModal } from '../../../components/alert/Alert';
-// import { AlertModal } from '../../../components/alert/Alert';
-
 
 const BiasFlow: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,25 +19,33 @@ const BiasFlow: React.FC = () => {
     setIsFirstClick(true);
   }, [currentIndex]);
 
+  useEffect(() => {
+    setIsFirstClick(true);
+  }, []);
+
   const goNext = () => {
     if (currentIndex < BiasQuestions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      // Add navigation to the next module here, e.g., using react-router.
       console.log("Module completed. Navigate to the next module.");
     }
   };
 
   const checkAnswer = (selected: string) => {
-
-    const currentQuestion = BiasQuestions[currentIndex];
-
+    console.log("we selected", selected)
     if (isFirstClick) {
       setIsFirstClick(false);
     }
     setIsOpen(true);
+    
+    if (selected.trim() === "") {
+      console.log("we are emprty")
+      return;
+    }
+    const currentQuestion = BiasQuestions[currentIndex];
 
-    // Check if this is the last question.
+
+
     if (currentIndex === BiasQuestions.length - 1) {
       if (currentQuestion.solution.toLowerCase() === selected.toLowerCase()) {
         setAlertMessage(
