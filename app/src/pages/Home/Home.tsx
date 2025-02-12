@@ -17,7 +17,7 @@ const Home: React.FC = () => {
   const { isDark } = useTheme();
 
   const topics = [
-    { title: 'S.Hesham Hussain', description: '' },
+    { title: 'Sayed Hesham Hussain', description: '' },
     { title: 'Adnan Jabri', description: '' },
     { title: 'Yousif Jawad', description: '' },
     { title: 'Reem Alhalwachi', description: '' }
@@ -44,12 +44,10 @@ const Home: React.FC = () => {
             </button>
           </div>
 
-          <div className="video-holder">
-            <video autoPlay loop muted className="video-content">
-              <source src={robotVideo} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+        <video autoPlay loop muted className="video-background">
+          <source src={robotVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         </div>
       </section>
 
