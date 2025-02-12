@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ClaudiInput from '../../../components/claudeUI/claudeUI';
+import { ClaudiInputWithOutput }  from '../../../components/claudeUI/claudeUI2';
 import { BiasQuestions } from '../../../questions/questions';
 import { Alert } from '../../../components/alert/Alert';
 
@@ -49,9 +49,11 @@ const BiasFlow: React.FC = () => {
 
   return (
     <div className="p-4">
-      <ClaudiInput
+      <ClaudiInputWithOutput
         username={username || "Guest"}
         prompt={BiasQuestions[currentIndex].prompt}
+        response={BiasQuestions[currentIndex].response}
+        checkAnswer={checkAnswer}
       />
       {alertMessage && alertType && (
         <Alert
