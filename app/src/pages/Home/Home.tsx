@@ -2,6 +2,11 @@ import React from 'react';
 import robotVideo from '../../assets/hp_robot.mp4';
 import { useTheme } from '../../context/ThemeContext';
 import Fly from '../../components/Fly/Fly';
+import spaceboy from '../../assets/spaceboy.png';
+import privacy_security from '../../assets/privacy_security.png';
+import bias from '../../assets/bias.png';
+import manipulation from '../../assets/manipulation.png';
+import the_path from '../../assets/the_path.png';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -48,14 +53,13 @@ const Home: React.FC = () => {
       <section className="diagonal-section">
         <div className="diagonal-content">
           <div className="diagonal-image-placeholder">
+            <img src={spaceboy} alt="Space Boy" className="diagonal-image" />
             <div className="image-overlay">Future of Learning</div>
           </div>
           <div className="diagonal-text">
-            <h2>Transform Your Understanding</h2>
+            <h2>Understand Responsible AI</h2>
             <p className={`diagonal-description ${isDark ? 'dark' : 'light'}`}>
-              Embark on a journey through the complexities of AI, guided by cutting-edge 
-              technology and expert insights. Our platform adapts to your learning style,
-              ensuring a personalized experience that evolves with you.
+              Embark on a journey where you explore how you can keep yourself safe as you are using AI, wether it be prompting, seeing responses, or evaluating results.
             </p>
           </div>
         </div>
@@ -64,34 +68,52 @@ const Home: React.FC = () => {
       {/* Image Grid Showcase */}
       <section className="showcase-grid">
         <div className="grid-container">
-          {[1, 2, 3, 4, 5, 6].map((num) => (
-            <div key={num} className="showcase-item">
-              <div className="showcase-image-placeholder">
-                <div className="hover-content">
-                  <h3>Feature {num}</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </div>
-            </div>
-          ))}
+          <div className="showcase-item">
+        <div className="showcase-image-placeholder">
+          <img src={privacy_security} alt="Privacy and Security" />
+          <div className="hover-content">
+            <h3>Privacy & Security</h3>
+            <p>Learn how AI handles data securely and maintains privacy.</p>
+          </div>
+        </div>
+          </div>
+          <div className="showcase-item">
+        <div className="showcase-image-placeholder">
+          <img src={bias} alt="Bias" />
+          <div className="hover-content">
+            <h3>Bias</h3>
+            <p>Understand bias in AI systems and how to address it effectively.</p>
+          </div>
+        </div>
+          </div>
+          <div className="showcase-item">
+        <div className="showcase-image-placeholder">
+          <img src={manipulation} alt="Manipulation" />
+          <div className="hover-content">
+            <h3>Manipulation</h3>
+            <p>Discover how AI can influence decisions and the ethical concerns.</p>
+          </div>
+        </div>
+          </div>
         </div>
       </section>
 
       {/* Circular Feature Section */}
       <section className="circular-section">
         <div className="circle-container">
-          <div className="circle-image-placeholder">
-            <div className="rotating-text">
-              <span>Interactive • Engaging • Modern • Innovative</span>
-            </div>
+          <div className="circular-image-holder">
+        <img src={the_path} alt="The Path" className="circular-image" />
+        <div className="rotating-text">
+          <span>Interactive • Engaging • Modern • Innovative</span>
+        </div>
           </div>
-          <div className="circle-content">
-            <h2>Experience AI Learning</h2>
-            <p className={`circle-description ${isDark ? 'dark' : 'light'}`}>
-              Our platform combines visual learning with hands-on practice,
-              creating an immersive environment where complex concepts become
-              clear and engaging. Watch as theory transforms into practical understanding.
-            </p>
+          <div className="circular-content">
+        <h2>Experience AI Learning</h2>
+        <p className={`circular-description ${isDark ? 'dark' : 'light'}`}>
+          Our platform combines visual learning with hands-on practice,
+          creating an immersive environment where complex concepts become
+          clear and engaging. Watch as theory transforms into practical understanding.
+        </p>
           </div>
         </div>
       </section>
