@@ -1,5 +1,6 @@
 { 
    "scripts": {
-    "front": "clear && cd app && npm run dev"
+    "front": "clear && cd app && npm run dev",
+    "i": "cd app && npm i && clear && npm run dev"
   }
 }
