@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Greeting from '../../../components/claudeUI/claudeUI';
+import ClaudiInput from '../../../components/claudeUI/claudeUI';
 import { PrivacyQuestions } from '../../../questions/questions';
 import { Alert } from '../../../components/alert/Alert';
 
@@ -48,10 +48,11 @@ const PrivacyFlow: React.FC = () => {
 
   return (
     <div className="p-4">
-      <Greeting
+      <ClaudiInput
         username={username || "Guest"}
         prompt={PrivacyQuestions[currentIndex].prompt}
-      />
+        checkAnswer={checkAnswer}
+        />
       {alertMessage && alertType && (
         <Alert
           message={alertMessage}
@@ -64,20 +65,6 @@ const PrivacyFlow: React.FC = () => {
           btnText={currentIndex === PrivacyQuestions.length - 1 ? "Go Next" : "Close"}
         />
       )}
-      <div className="mt-4 flex justify-center gap-4">
-        <button
-          onClick={() => checkAnswer('safe')}
-          className="px-4 py-2 text-lg bg-white border border-gray-300 rounded hover:bg-gray-100 cursor-pointer"
-        >
-          Safe
-        </button>
-        <button
-          onClick={() => checkAnswer('unsafe')}
-          className="px-4 py-2 text-lg bg-white border border-gray-300 rounded hover:bg-gray-100 cursor-pointer"
-        >
-          Unsafe
-        </button>
-      </div>
     </div>
   );
 };

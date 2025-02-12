@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export const IconLucideArrowUp = ({
-  height = "1em",
+  height = "1.5em",
   strokeWidth = "2",
   fill = "none",
   focusable = "false",

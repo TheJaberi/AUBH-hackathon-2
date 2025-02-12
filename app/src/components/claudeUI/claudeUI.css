@@ -1,5 +1,4 @@
-/* // Greeting.css */
-.greeting-container {
+.claude-container {
     width: 90%;
     max-width: 800px;
     margin: 0 auto 2rem;
@@ -8,7 +7,7 @@
     align-items: center;
 }
 
-.greeting-content {
+.claude-content {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -16,7 +15,7 @@
     gap: 1.5rem;
 }
 
-.greeting-header {
+.claude-header {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -42,7 +41,7 @@ h1 {
     color: #1e293b;
 }
 
-.greeting-input-container {
+.claude-input-container {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
@@ -51,15 +50,15 @@ h1 {
     transition: all 0.3s ease;
 }
 
-.welcome-container.dark .greeting-input-container {
+.welcome-container.dark .claude-input-container {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.welcome-container.light .greeting-input-container {
+.welcome-container.light .claude-input-container {
     background-color: rgba(30, 41, 59, 0.05);
 }
 
-.greeting-input {
+.claude-input {
     width: 100%;
     background-color: transparent;
     border: none;
@@ -68,27 +67,27 @@ h1 {
     margin-bottom: 16px;
 }
 
-.welcome-container.dark .greeting-input {
+.welcome-container.dark .claude-input {
     color: #ffffff;
 }
 
-.welcome-container.light .greeting-input {
+.welcome-container.light .claude-input {
     color: #1e293b;
 }
 
-.welcome-container.dark .greeting-input::placeholder {
+.welcome-container.dark .claude-input::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.welcome-container.light .greeting-input::placeholder {
+.welcome-container.light .claude-input::placeholder {
     color: rgba(30, 41, 59, 0.6);
 }
 
-.greeting-input:focus {
+.claude-input:focus {
     outline: none;
 }
 
-.greeting-footer {
+.claude-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -96,11 +95,11 @@ h1 {
     transition: all 0.3s ease;
 }
 
-.welcome-container.dark .greeting-footer {
+.welcome-container.dark .claude-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.welcome-container.light .greeting-footer {
+.welcome-container.light .claude-footer {
     border-top: 1px solid rgba(30, 41, 59, 0.1);
 }
 
@@ -140,22 +139,22 @@ h1 {
     font-size: 10px;
 }
 
-.welcome-container.dark .style-selector:hover {
+.welcome-container.dark .style-button:hover {
     border-radius: 3px;
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.welcome-container.light .style-selector:hover {
+.welcome-container.light .style-button:hover {
     border-radius: 3px;
     background-color: rgba(30, 41, 59, 0.1);
 }
 
 @media (max-width: 768px) {
-    .greeting-input-container {
+    .claude-input-container {
         width: 100%;
     }
     
-    .greeting-header {
+    .claude-header {
         flex-direction: row;
         text-align: center;
         gap: 8px;
