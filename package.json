@@ -1,1 +1,6 @@
-{"scripts":{"front":"clear && cd app && npm run dev","i":"cd app && npm i && clear && npm run dev"},"dependencies":{"react-router-dom":"^7.1.5"},"devDependencies":{"@types/react-router-dom":"^5.3.3"}}
+{
+    "scripts": {
+        "front": "clear && cd app && npm run dev",
+        "i": "cd app && npm i && clear && npm run dev"
+    }
+}
