@@ -1,6 +1,6 @@
 /* // Greeting.css */
 .greeting-container {
-    width: 100%;
+    width: 90%;
     max-width: 800px;
     margin: 0 auto 2rem;
     display: flex;
@@ -156,7 +156,7 @@ h1 {
     }
     
     .greeting-header {
-        flex-direction: column;
+        flex-direction: row;
         text-align: center;
         gap: 8px;
     }

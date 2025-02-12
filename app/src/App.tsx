@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Learning from './pages/Learning/Learning';
 import './App.css';
+import Privacy from './pages/Learning/Privacy/privacy';
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/learning" element={<Learning />} />
+            <Route path ="/learning/privacy" element={<Privacy />} />
           </Routes>
         </MainLayout>
       </BrowserRouter>
