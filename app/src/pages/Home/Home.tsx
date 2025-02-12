@@ -121,12 +121,17 @@ const Home: React.FC = () => {
       {/* Metrics Section */}
       <section className="metrics-section">
         <div className="metrics-grid">
-          {['Users', 'Courses', 'Success Rate', 'Hours Saved'].map((metric, index) => (
-            <div key={metric} className="metric-card">
-              <h3>95%</h3>
-              <p>{metric}</p>
-              <div className={`metric-background bg-${index + 1}`}></div>
-            </div>
+          {[
+        { percent: '353M', text: 'Users Exposed' },
+        { percent: '38.6%', text: 'AI Bias Found' },
+        { percent: '10%', text: 'AI Generated Data' },
+        { percent: '80%', text: 'Business Impact' }
+          ].map((metric, index) => (
+        <div key={metric.text} className="metric-card">
+          <h3>{metric.percent}</h3>
+          <p>{metric.text}</p>
+          <div className={`metric-background bg-${index + 1}`}></div>
+        </div>
           ))}
         </div>
       </section>
