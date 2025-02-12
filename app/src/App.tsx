@@ -7,6 +7,7 @@ import About from './pages/About/About';
 import Learning from './pages/Learning/Learning';
 import './App.css';
 import Privacy from './pages/Learning/Privacy/privacy';
+import Bias from './pages/Learning/Bias/bias';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,8 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/learning" element={<Learning />} />
             <Route path ="/learning/privacy" element={<Privacy />} />
+            <Route path ="/learning/bias" element={<Bias />} />
+
           </Routes>
         </MainLayout>
       </BrowserRouter>
