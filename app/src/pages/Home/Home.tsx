@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import robotVideo from '../../assets/hp_robot1.mp4';
+import robotVideo from '../../assets/hp_robot.mp4';
 import { useTheme } from '../../context/ThemeContext';
 import Fly from '../../components/Fly/Fly';
+import AnimatedBackground from '../../components/AnimatedBackground/AnimatedBackground';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -38,10 +39,11 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-main-content">
+      <AnimatedBackground isDark={isDark} />
       <Fly isDark={isDark} />
 
       <section className="home-fade-in">
-        <h1 className="home-title">Welcome to AI Learning</h1>
+        <h1 className="home-title">Welcome to GenRes</h1>
         <p className={`home-subtitle ${isDark ? 'dark' : 'light'}`}>
           Discover the fascinating world of artificial intelligence through our interactive learning platform.
         </p>

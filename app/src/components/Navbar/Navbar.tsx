@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={`nav-bar ${isDark ? 'dark' : 'light'}`}>
-      <div className="logo">AI Learning</div>
+      <Link to="/" className="logo">GenRes</Link>
       <div className={`nav-links ${isDark ? 'dark' : 'light'}`}>
         <Link to="/">Home</Link>
         <Link to="/learning">Learning Paths</Link>
