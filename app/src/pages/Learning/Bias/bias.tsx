@@ -11,10 +11,15 @@ const BiasFlow: React.FC = () => {
   const [alertType, setAlertType] = useState<'success' | 'error' | null>(null);
   const [username, setUserName] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isFirstClick, setIsFirstClick] = useState(true);
 
   useEffect(() => {
     setUserName(localStorage.getItem('userName'));
   }, []);
+
+  useEffect(() => {
+    setIsFirstClick(true);
+  }, [currentIndex]);
 
   const goNext = () => {
     if (currentIndex < BiasQuestions.length - 1) {
@@ -29,7 +34,9 @@ const BiasFlow: React.FC = () => {
 
     const currentQuestion = BiasQuestions[currentIndex];
 
-    // open the alert modal for feedback
+    if (isFirstClick) {
+      setIsFirstClick(false);
+    }
     setIsOpen(true);
 
     // Check if this is the last question.
@@ -61,6 +68,7 @@ const BiasFlow: React.FC = () => {
         prompt={BiasQuestions[currentIndex].prompt}
         response={BiasQuestions[currentIndex].response}
         checkAnswer={checkAnswer}
+        isFirstClick={isFirstClick}
       />
       {alertMessage && alertType && (
         <AlertModal

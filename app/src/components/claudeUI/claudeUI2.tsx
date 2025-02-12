@@ -8,9 +8,10 @@ interface ClaudeInputProps {
     prompt: string;
     response: string;
     checkAnswer: (selected: string) => void;
+    isFirstClick: boolean;
 }
 
-export const ClaudiInputWithOutput: React.FC<ClaudeInputProps> = ({ username, prompt, response, checkAnswer }) => {
+export const ClaudiInputWithOutput: React.FC<ClaudeInputProps> = ({ username, prompt, response, checkAnswer, isFirstClick }) => {
     return (
         <div className="claude-container">
             <div className="claude-content">
@@ -41,11 +42,11 @@ export const ClaudiInputWithOutput: React.FC<ClaudeInputProps> = ({ username, pr
                         <span className="model-name">Claude 3.5 Sonnet</span>
                         <div className="style-selector flex flex-row">
                             <button className="style-button" onClick={() => { checkAnswer('safe') }}>
-                                Biased
+                                {isFirstClick ? "Send" : "Biased"}
                                 <IconLucideArrowUp />
                             </button>
                             <button className='style-button' onClick={() => { checkAnswer('unsafe') }}>
-                                Not Biased
+                                {isFirstClick ? "Receive" : "Not Biased"}
                                 <X />
                             </button>
                         </div>
@@ -55,5 +56,3 @@ export const ClaudiInputWithOutput: React.FC<ClaudeInputProps> = ({ username, pr
         </div>
     );
 };
-
-
