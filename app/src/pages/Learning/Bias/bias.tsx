@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ClaudiInputWithOutput } from '../../../components/claudeUI/claudeUI2';
+import { ClaudeInputWithOutput } from '../../../components/claudeUI/claudeUI2';
 import { BiasQuestions } from '../../../questions/questions';
 import { AlertModal } from '../../../components/alert/Alert';
 
@@ -37,7 +37,7 @@ const BiasFlow: React.FC = () => {
       setIsFirstClick(false);
     }
     setIsOpen(true);
-    
+
     if (selected.trim() === "") {
       console.log("we are emprty")
       return;
@@ -69,7 +69,7 @@ const BiasFlow: React.FC = () => {
 
   return (
     <div className="p-4">
-      <ClaudiInputWithOutput
+      <ClaudeInputWithOutput
         username={username || "Guest"}
         prompt={BiasQuestions[currentIndex].prompt}
         response={BiasQuestions[currentIndex].response}
