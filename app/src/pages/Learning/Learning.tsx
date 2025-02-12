@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../../context/ThemeContext';
-import ClaudiInput from '../../components/claudeUI/claudeUI';
 import NameInput from '../../components/NameInput/NameInput';
 import './Learning.css';
 
@@ -57,7 +56,6 @@ const Learning: React.FC = () => {
 
   return (
     <div className="learning-content">
-      <ClaudiInput username={userName} />
       <h1>Learning Paths</h1>
       <p className={`description ${isDark ? 'dark' : 'light'}`}>
         Choose your AI learning journey from our carefully crafted paths. Each path is designed 

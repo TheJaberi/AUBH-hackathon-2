@@ -50,6 +50,16 @@ h1 {
     transition: all 0.3s ease;
 }
 
+.claude-ai-input{
+    text-align: right;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
 .welcome-container.dark .claude-input-container {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -168,3 +178,28 @@ h1 {
         font-size: 36px;
     }
 }
+
+.chat-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4A5568;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+  }
+  
+  .user-message {
+    background-color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+  }

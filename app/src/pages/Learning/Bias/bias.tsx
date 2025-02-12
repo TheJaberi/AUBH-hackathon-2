@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ClaudiInput from '../../../components/claudeUI/claudeUI';
+import { ClaudiInputWithOutput }  from '../../../components/claudeUI/claudeUI2';
 import { BiasQuestions } from '../../../questions/questions';
 import { Alert } from '../../../components/alert/Alert';
 
@@ -49,9 +49,11 @@ const BiasFlow: React.FC = () => {
 
   return (
     <div className="p-4">
-      <ClaudiInput
+      <ClaudiInputWithOutput
         username={username || "Guest"}
         prompt={BiasQuestions[currentIndex].prompt}
+        response={BiasQuestions[currentIndex].response}
+        checkAnswer={checkAnswer}
       />
       {alertMessage && alertType && (
         <Alert
@@ -65,20 +67,6 @@ const BiasFlow: React.FC = () => {
           btnText={currentIndex === BiasQuestions.length - 1 ? "Go Next" : "Close"}
         />
       )}
-      <div className="mt-4 flex justify-center gap-4">
-        <button
-          onClick={() => checkAnswer('safe')}
-          className="px-4 py-2 text-lg bg-white text-black border border-gray-300 rounded hover:bg-gray-100 cursor-pointer"
-        >
-          Safe
-        </button>
-        <button
-          onClick={() => checkAnswer('unsafe')}
-          className="px-4 py-2 text-lg bg-white text-black border border-gray-300 rounded hover:bg-gray-100 cursor-pointer"
-        >
-          Unsafe
-        </button>
-      </div>
     </div>
   );
 };

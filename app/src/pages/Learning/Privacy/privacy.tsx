@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ClaudiInput from '../../../components/claudeUI/claudeUI';
+import { ClaudiInput } from '../../../components/claudeUI/claudeUI';
 import { PrivacyQuestions } from '../../../questions/questions';
 import { Alert } from '../../../components/alert/Alert';
 

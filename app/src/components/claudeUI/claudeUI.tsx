@@ -9,7 +9,7 @@ interface ClaudeInputProps {
   checkAnswer: (selected: string) => void;
 }
 
-const ClaudiInput: React.FC<ClaudeInputProps> = ({ username, prompt, checkAnswer }) => {
+export const ClaudiInput: React.FC<ClaudeInputProps> = ({ username, prompt, checkAnswer }) => {
   return (
     <div className="claude-container">
       <div className="claude-content">
@@ -43,4 +43,3 @@ const ClaudiInput: React.FC<ClaudeInputProps> = ({ username, prompt, checkAnswer
   );
 };
 
-export default ClaudiInput;
