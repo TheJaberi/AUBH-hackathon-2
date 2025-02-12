@@ -20,7 +20,7 @@
 .gradient-shape {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  /* filter: blur(80px); */
   opacity: 0.8;  /* Increased from 0.7 */
   animation: moveGradient 20s infinite alternate;
   will-change: transform;
@@ -174,9 +174,9 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .gradient-shape {
-    filter: blur(60px);
-  }
+  /* .gradient-shape { */
+    /* filter: blur(60px); */
+  /* } */
 
   .circuit-pattern {
     background-size: 20px 20px;

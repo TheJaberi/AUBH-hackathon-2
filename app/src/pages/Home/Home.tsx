@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import robotVideo from '../../assets/hp_robot.mp4';
 import { useTheme } from '../../context/ThemeContext';
 import Fly from '../../components/Fly/Fly';
@@ -14,9 +14,11 @@ import girl1 from '../../assets/girl1.jpg';
 // import logo from '../../assets/logo.jpg.jpg';
 import './Home.css';
 import './animations.css';
+import AnimatedBackground from '../../components/BackgroundAnimations/AnimatedBackground';
 
 const Home: React.FC = () => {
   const { isDark } = useTheme();
+  const [showCoolBackground, setShowCoolBackground] = useState(false);
 
   const topics = [
     { title: 'Sayed Hesham Hussain', description: '' },
@@ -27,6 +29,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-main-content">
+      {showCoolBackground && <AnimatedBackground isDark={isDark} />}
       <Fly isDark={isDark} />
 
       {/* Hero Section */}
@@ -42,6 +45,12 @@ const Home: React.FC = () => {
             </button>
             <button className={`home-btn home-btn-secondary ${!isDark ? 'light' : ''}`}>
               Learn More
+            </button>
+            <button 
+              className={`home-btn home-btn-secondary ${!isDark ? 'light' : ''}`}
+              onClick={() => setShowCoolBackground(!showCoolBackground)}
+            >
+              {showCoolBackground ? 'Normal' : 'Cool'}
             </button>
           </div>
 

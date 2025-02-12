@@ -19,6 +19,11 @@
   position: relative;
   z-index: 1;
   overflow-x: hidden;
+  transition: background 0.3s ease;
+}
+
+/* Apply background only when animated background is not active */
+.home-main-content:not(:has(.animated-background)) {
   background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05), rgba(168, 85, 247, 0.05));
   animation: gradientBG 15s ease infinite;
   background-size: 200% 200%;
