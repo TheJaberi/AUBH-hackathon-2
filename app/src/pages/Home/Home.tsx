@@ -19,6 +19,15 @@ import AnimatedBackground from '../../components/BackgroundAnimations/AnimatedBa
 const Home: React.FC = () => {
   const { isDark } = useTheme();
   const [showCoolBackground, setShowCoolBackground] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === topics.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? topics.length - 1 : prev - 1));
+  };
 
   const topics = [
     { title: 'Sayed Hesham Hussain', description: '' },
@@ -147,16 +156,36 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Topic Cards Section */}
-      <section className="topic-cards-section">
-        {topics.map((topic, index) => (
-          <div key={index} className={`topic-card ${!isDark ? 'light' : ''}`}>
-            <img src={index === 0 ? man1 : index === 1 ? man2 : index === 2 ? man3 : girl1} alt={topic.title} />
-            <div className="hover-content">
-              <h3>{topic.title}</h3>
+      {/* Topic Cards Carousel Section */}
+      <section className="topic-carousel-section">
+        <div className="carousel-container">
+          <button className="carousel-button prev" onClick={prevSlide}>
+            &#10094;
+          </button>
+          <div className="carousel-content">
+            <div key={currentSlide} className={`topic-card ${!isDark ? 'light' : ''}`}>
+              <img 
+                src={currentSlide === 0 ? man1 : currentSlide === 1 ? man2 : currentSlide === 2 ? man3 : girl1} 
+                alt={topics[currentSlide].title} 
+              />
+              <div className="hover-content">
+                <h3>{topics[currentSlide].title}</h3>
+              </div>
             </div>
           </div>
-        ))}
+          <button className="carousel-button next" onClick={nextSlide}>
+            &#10095;
+          </button>
+          <div className="carousel-dots">
+            {topics.map((_, index) => (
+              <span
+                key={index}
+                className={`dot ${currentSlide === index ? 'active' : ''}`}
+                onClick={() => setCurrentSlide(index)}
+              />
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Call to Action Section */}
