@@ -1,0 +1,54 @@
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Background Gradient Animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Glow Pulse */
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 5px rgba(56, 189, 248, 0.2), 0 0 20px rgba(168, 85, 247, 0.1); }
+  50% { box-shadow: 0 0 10px rgba(56, 189, 248, 0.3), 0 0 30px rgba(168, 85, 247, 0.2); }
+  100% { box-shadow: 0 0 5px rgba(56, 189, 248, 0.2), 0 0 20px rgba(168, 85, 247, 0.1); }
+}
+
+/* Scale on Hover */
+@keyframes scaleUp {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+/* Gradient Text Animation */
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Particle Movement */
+@keyframes particleMove {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(100px, -100px);
+    opacity: 0;
+  }
+}
