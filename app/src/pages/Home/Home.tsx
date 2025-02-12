@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import robotVideo from '../../assets/hp_robot1.mp4';
 import { useTheme } from '../../context/ThemeContext';
 import Fly from '../../components/Fly/Fly';
 import './Home.css';
@@ -46,8 +47,8 @@ const Home: React.FC = () => {
         </p>
 
         <div className="video-holder home-fade-in">
-          <video controls className="video-content">
-            <source src="your-video-file.mp4" type="video/mp4" />
+          <video autoPlay loop muted className="video-content">
+            <source src={robotVideo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
