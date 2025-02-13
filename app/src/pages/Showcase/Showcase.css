@@ -1,13 +1,37 @@
-.showcase-container {
+.showcase-wrapper {
   width: 100%;
   height: 100vh;
-  overflow: hidden;
-  background-color: #000;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
+  color: white;
+  overflow: hidden;
+}
+
+.showcase-container {
+  width: 100%;
+  height: calc(100vh - 80px);
+  position: relative;
+}
+
+.showcase-header {
+  text-align: center;
+  padding: 20px;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: bold;
+  margin: 0;
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 1;
 }
 
 canvas {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
 }
