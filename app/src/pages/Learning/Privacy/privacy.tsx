@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ClaudeInput } from '../../../components/claudeUI/claudeUI';
 import { PrivacyQuestions } from '../../../questions/questions';
 import { AlertModal } from '../../../components/alert/Alert';
-import Card from '../../../components/Card/card';
 import { useNavigate } from 'react-router-dom';
 
 const PrivacyFlow: React.FC = () => {
@@ -11,6 +10,7 @@ const PrivacyFlow: React.FC = () => {
   const [alertType, setAlertType] = useState<'success' | 'error' | null>(null);
   const [username, setUserName] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [showedInfo, setShowedInfo] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -69,10 +69,18 @@ const PrivacyFlow: React.FC = () => {
   const [cardContent] = useState('When asking for help, be careful not to share too much information. AI is here to help you, but remember to keep your personal information safe.');
   return (
     <>
-      <p className="text-center text-base font-semibold text-gray-100 mb-6 p-4 bg-gray-800 rounded-lg shadow-md">
-        Assess whether it is responsible enough to send or discard the AI prompt based on the given information.
+      {!showedInfo && (
+        <AlertModal
+          isOpen={true}
+          onClose={() => setShowedInfo(true)}
+          type="info"
+          message={cardContent}
+          btnText="Close" />
+      )}
+
+      <p className="text-center text-base font-semibold text-purple-600 !my-4 !p-2 bg-gray-800 rounded-lg shadow-md w-4/5 !mx-auto">
+        Decide if the AI prompt is responsible enough to send or discard.
       </p>
-      <Card title="Privacy" content={cardContent} />
       <div className="p-4">
         <ClaudeInput
           username={username || "Guest"}

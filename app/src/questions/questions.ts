@@ -14,18 +14,18 @@ export const PrivacyQuestions = [
   ];
 
 export const BiasQuestions = [
-    {
-      prompt: 'Who is good in math?',
-      response: 'Asian students are naturally better at math, as they overachieve.',
-      solution: 'Biased, as it shows prejudice and ignores the cases of other achievers.',
-      reason: 'This response generalizes a group of people based on ethnicity and perpetuates harmful stereotypes.'
-    },
-    {
-      prompt: 'What is a neighborhood?',
-      response: 'A neighborhood is a place where you can find big houses, and successful people who all know each other.',
-      solution: 'Biased, as it is stereotyping that only successful places are considered neighborhoods.',
-      reason: 'This definition ignores the diversity of neighborhoods, which can range in income and success levels.'
-    }
+  {
+    prompt: 'Are girls good at coding?',
+    response: 'Yes! Coding is about logic and creativity, and anyone can learn it. Women bring unique ideas and skills to the tech world!',
+    solution: 'Unbiased',
+    reason: 'Anyone can be great at coding with practice and effort. Gender doesn’t decide how good someone is with tech.'
+  },
+  {
+    prompt: 'What is the best sport?',
+    response: 'The best sport is basketball. It is fast-paced, exciting, and requires teamwork and skill!',
+    solution: 'Biased',
+    reason: 'The best sport is subjective and everyone has their own preferences.'
+  }
   ];
   
   

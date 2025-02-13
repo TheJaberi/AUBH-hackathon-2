@@ -5,7 +5,7 @@ import { useTheme } from "../../context/ThemeContext"
 
 interface AlertModalProps {
   message: string
-  type: "success" | "error"
+  type: "success" | "error" | "info"
   onClose: () => void
   btnText?: string
   isOpen: boolean
@@ -22,10 +22,12 @@ export const AlertModal: React.FC<AlertModalProps> = ({ message, type, onClose, 
           <Dialog.Title className={`!text-xl !font-semibold !m-2 !flex !items-center !gap-2 ${isDark ? '!text-gray-200' : '!text-gray-800'}`}>
             {type === "success" ? (
               <CheckCircle2 className="!h-6 !w-6 !text-green-500" />
-            ) : (
+            ) : type === "error" ? (
               <AlertCircle className="!h-6 !w-6 !text-red-500" />
+            ) : (
+              <AlertCircle className="!h-6 !w-6 !text-blue-500" />
             )}
-            {type === "success" ? "Success" : "Error"}
+            {type === "success" ? "Success" : type === "error" ? "Error" : "Info"}
           </Dialog.Title>
           <Dialog.Description className={`!mx-5 ${isDark ? '!text-gray-400' : '!text-gray-500'}`}>{message}</Dialog.Description>
           <div className="!m-4 !flex !justify-end">
