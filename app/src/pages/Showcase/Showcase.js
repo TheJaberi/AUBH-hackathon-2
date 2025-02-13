@@ -4,10 +4,10 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
 // GLB file paths and labels
 const modelPaths = [
-  '/models/tripo_pbr_model_9e5ba12b-5f45-4ea3-93a3-89a18cc11e3a.glb',
-  '/models/tripo_pbr_model_93406153-93cc-4fd0-89e7-6eeea79c51ea.glb',
-  '/models/tripo_pbr_model_a1bb976b-f0d2-43f8-9db1-a3d57ec04bc8.glb',
-  '/models/tripo_pbr_model_cbcf7196-6f2e-4405-bb82-5934fbe8fa14.glb'
+  '/src/assets/privacy.glb',
+  '/src/assets/bias.glb',
+  '/src/assets/manipulation.glb',
+  '/src/assets/earth.glb'
 ];
 
 const modelLabels = [
@@ -223,15 +223,15 @@ class Showcase {
     const isMobile = window.innerWidth <= 768;
     
     this.positions = isMobile ? [
-      [-1.5, 0.4, -1],
+      [-1.5, 0.6, -1],
       [1.5, 0.4, -1],
       [-1.5, 0.4, 1],
-      [1.5, 0.4, 1]
+      [1.5, 0.6, 1]
     ] : [
-      [-6, 0.4, 0],
+      [-6, 0.6, 0],
       [-2, 0.4, 0],
       [2, 0.4, 0],
-      [6, 0.4, 0]
+      [6, 0.6, 0]
     ];
 
     // Update existing models if they exist
@@ -280,7 +280,7 @@ class Showcase {
       (gltf) => {
         const model = gltf.scene;
         model.position.set(x, y, z);
-        model.scale.set(0.5, 0.5, 0.5);
+        model.scale.set(1, 1, 1);
         
         // Enable shadows for the model
         model.traverse((node) => {
