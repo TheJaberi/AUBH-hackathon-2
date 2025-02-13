@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './caseStudy.css';
 import { AlertModal } from '../../../components/alert/Alert';
+import chatai from '../../../assets/chatai.webp';
+import tom from '../../../assets/tom.webp';
+import danger from '../../../assets/danger.webp';
 
 const CaseStudy: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +20,7 @@ const CaseStudy: React.FC = () => {
       <div className="case-card">
         <h2>🎥 Deepfakes: The Tom Cruise TikTok Mystery 🕵️‍♀️</h2>
         <img 
-          src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif" 
+          src={tom}
           alt="Tom Cruise Deepfake" 
           className="case-image"
         />
@@ -38,7 +41,7 @@ const CaseStudy: React.FC = () => {
       <div className="case-card">
         <h2>📰 Fake News Alert: The GPT-3 Guardian Article 🚨</h2>
         <img 
-          src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif" 
+          src={chatai}
           alt="GPT-3 Guardian Article" 
           className="case-image"
         />
@@ -59,7 +62,7 @@ const CaseStudy: React.FC = () => {
       <div className="case-card">
         <h2>🕵️‍♂️ Privacy Breach: The Clearview AI Mystery 🕶️</h2>
         <img 
-          src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif" 
+          src={danger} 
           alt="Clearview AI" 
           className="case-image"
         />
