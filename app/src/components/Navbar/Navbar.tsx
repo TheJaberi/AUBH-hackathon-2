@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import './Navbar.css';
-import logo from '../../assets/logo.jpg.jpg';
+import logo from '../../assets/logo.jpg.png';
 
 const Navbar: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
