@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AlertModal } from '../../../components/alert/Alert';
 import { ManipulationQuestions } from '../../../questions/questions';
 import Confetti from 'react-confetti';
+import { useNavigate } from 'react-router-dom';
 
 const ManipulationFlow: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,7 +12,7 @@ const ManipulationFlow: React.FC = () => {
   const [showedInfo, setShowedInfo] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [cardContent] = useState('Be mindful about the information you encounter. Always question the source and authenticity, especially when dealing with AI-generated content. Critical thinking is your best tool against manipulation.');
-
+  const navigate = useNavigate();
 
   const goNext = () => {
     if (currentIndex < ManipulationQuestions.length - 1) {
@@ -20,6 +21,7 @@ const ManipulationFlow: React.FC = () => {
       console.log("Hurray you finished all modules!!");
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 3000);
+      navigate('/learning/case-study');
     }
   };
 
@@ -30,12 +32,12 @@ const ManipulationFlow: React.FC = () => {
     if (currentIndex === ManipulationQuestions.length - 1) {
       if (currentQuestion.AiGenerated === selected) {
         setAlertMessage(
-          `Correct answer - ${currentQuestion.Reason}. You completed the module Manipulation, click Go Next to go to the next module`
+          `You are correct! the reason is ${currentQuestion.Reason}. Good Job! you are an expert in this field! want to learn more about case studies?`
         );
         setAlertType('success');
       } else {
         setAlertMessage(
-          `Incorrect answer - ${currentQuestion.Reason}. You completed the module Manipulation, click Go Next to go to the next module`
+          `Sadly your answer was incorrect :( the reason is ${currentQuestion.Reason}. well done on your effors however. would you like to learn more about case studies?`
         );
         setAlertType('error');
       }

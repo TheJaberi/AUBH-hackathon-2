@@ -53,12 +53,14 @@ const BiasFlow: React.FC = () => {
     if (currentIndex === BiasQuestions.length - 1) {
       if (currentQuestion.solution.toLowerCase() === selected.toLowerCase()) {
         setAlertMessage(
-          `Correct answer - ${currentQuestion.reason}. You completed the module Bias, click Go Next to go to the next module`
+          `You are correct! the reason is ${currentQuestion.reason}. Good Job! you are an expert in this field! Go next to learn about Manipulating!`
+
         );
         setAlertType('success');
       } else {
         setAlertMessage(
-          `Incorrect answer - ${currentQuestion.reason}. You completed the module Bias, click Go Next to go to the next module`
+          `Sadly your answer was incorrect :( the reason is ${currentQuestion.reason}. Go next to learn about Manipulating!`
+
         );
         setAlertType('error');
       }
