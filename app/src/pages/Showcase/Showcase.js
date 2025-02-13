@@ -19,6 +19,12 @@ const modelLabels = [
 
 class Showcase {
   constructor(container) {
+    this.container = container;
+    this.selectedModel = null;
+    this.defaultCameraPosition = new THREE.Vector3(0, 2, 8);
+    this.raycaster = new THREE.Raycaster();
+    this.mouse = new THREE.Vector2();
+
     // Scene setup
     this.scene = new THREE.Scene();
     
@@ -50,6 +56,7 @@ class Showcase {
     });
     const sky = new THREE.Mesh(skyGeometry, skyMaterial);
     this.scene.add(sky);
+
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     this.renderer = new THREE.WebGLRenderer({ 
       antialias: true,
@@ -59,11 +66,10 @@ class Showcase {
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    container.appendChild(this.renderer.domElement);
+    this.container.appendChild(this.renderer.domElement);
 
     // Camera position
-    this.camera.position.set(0, 2, 4);
-    this.camera.lookAt(0, 0, 0);
+    this.updateCameraPosition();
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -119,24 +125,68 @@ class Showcase {
       this.loadModel(path, index);
     });
 
-    // Handle window resize
+    // Handle window resize and clicks
     window.addEventListener('resize', this.onWindowResize.bind(this));
+    this.container.addEventListener('click', this.onClick.bind(this));
 
     // Start animation loop
     this.animate();
+  }
+
+  updateCameraPosition(target) {
+    const isMobile = window.innerWidth <= 768;
+    if (target) {
+      // Zoom to model
+      const offset = new THREE.Vector3(0, 1, 3);
+      this.camera.position.copy(target.position).add(offset);
+      this.camera.lookAt(target.position);
+    } else {
+      // Reset to default view
+      if (isMobile) {
+        this.camera.position.set(0, 4, 6);
+      } else {
+        this.camera.position.copy(this.defaultCameraPosition);
+      }
+      this.camera.lookAt(0, 0.4, 0);
+    }
+  }
+
+  onClick(event) {
+    // Calculate mouse position in normalized device coordinates
+    const rect = this.container.getBoundingClientRect();
+    this.mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    this.mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+    // Update the picking ray with the camera and mouse position
+    this.raycaster.setFromCamera(this.mouse, this.camera);
+
+    // Calculate objects intersecting the picking ray
+    const intersects = this.raycaster.intersectObjects(this.models, true);
+
+    if (intersects.length > 0 && !this.selectedModel) {
+      // Find the root model object
+      let modelRoot = intersects[0].object;
+      while (modelRoot.parent && !this.models.includes(modelRoot)) {
+        modelRoot = modelRoot.parent;
+      }
+      this.selectedModel = modelRoot;
+      this.updateCameraPosition(modelRoot);
+    } else {
+      // Reset view
+      this.selectedModel = null;
+      this.updateCameraPosition(null);
+    }
   }
 
   updateModelPositions() {
     const isMobile = window.innerWidth <= 768;
     
     this.positions = isMobile ? [
-      // Mobile layout: 2x2 grid with less spread
       [-1.5, 0.4, -1],
       [1.5, 0.4, -1],
-      [-1.5, 0.4, 2],
-      [1.5, 0.4, 2]
+      [-1.5, 0.4, 1],
+      [1.5, 0.4, 1]
     ] : [
-      // Desktop layout: single row
       [-6, 0.4, 0],
       [-2, 0.4, 0],
       [2, 0.4, 0],
@@ -150,14 +200,6 @@ class Showcase {
         model.position.set(x, y, z);
       }
     });
-
-    // Update camera position based on layout
-    if (isMobile) {
-      this.camera.position.set(0, 4, 6);
-    } else {
-      this.camera.position.set(0, 2, 8);
-    }
-    this.camera.lookAt(0, 0.4, 0);
   }
 
   createTextSprite(text) {
@@ -165,11 +207,8 @@ class Showcase {
     const context = canvas.getContext('2d');
     canvas.width = 256;
     canvas.height = 128;
-
-    context.fillStyle = '#000000';
-    context.fillRect(0, 0, canvas.width, canvas.height);
     
-    context.font = 'bold 36px Arial';
+    context.font = 'bold 24px Arial';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     
@@ -188,7 +227,7 @@ class Showcase {
     });
     
     const sprite = new THREE.Sprite(spriteMaterial);
-    sprite.scale.set(3, 1.5, 1);
+    sprite.scale.set(2, 1, 1);
     return sprite;
   }
 
@@ -237,7 +276,11 @@ class Showcase {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.updateModelPositions();
+    // Only update positions if not zoomed into a model
+    if (!this.selectedModel) {
+      this.updateModelPositions();
+      this.updateCameraPosition(null);
+    }
   }
 
   animate() {
@@ -245,7 +288,7 @@ class Showcase {
 
     // Rotate models
     this.models.forEach(model => {
-      if (model) {
+      if (model && (!this.selectedModel || model === this.selectedModel)) {
         model.rotation.y += 0.01;
       }
     });
@@ -255,6 +298,7 @@ class Showcase {
 
   dispose() {
     window.removeEventListener('resize', this.onWindowResize.bind(this));
+    this.container.removeEventListener('click', this.onClick.bind(this));
     this.renderer.dispose();
   }
 }
