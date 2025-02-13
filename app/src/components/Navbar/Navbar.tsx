@@ -17,6 +17,7 @@ const Navbar: React.FC = () => {
         <Link to="/">Home</Link>
         <Link to="/learning">Learning Paths</Link>
         <Link to="/about">About</Link>
+        <Link to="/showcase">Showcase</Link>
         <button className="theme-toggle" onClick={toggleTheme}>
           {isDark ? '☀️' : '🌙'}
         </button>
