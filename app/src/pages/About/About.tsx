@@ -46,6 +46,14 @@ const About: React.FC = () => {
           </div>
         </div>
       </section>
+      <section className="spacer-large"></section>
+      <section className={`about-section ${isDark ? 'dark' : 'light'}`}>
+        <div className="feature-card">
+          <span className="feature-icon">💡</span>
+          <h3>Team Collaboration</h3>
+          <p>While each member had a specific focus, everyone contributed across different areas, supporting one another to bring GenRes to life! 🚀✨</p>
+        </div>
+      </section>
 
       {/* About AI Learning Section (Restored) */}
       <h1>About GenRes</h1>

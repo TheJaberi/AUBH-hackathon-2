@@ -188,3 +188,6 @@
     grid-template-columns: 1fr;
   }
 }
+.spacer-large {
+  height: 3rem; 
+}
