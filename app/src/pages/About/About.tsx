@@ -5,10 +5,12 @@ import man2 from '../../assets/man2.jpg';
 import man3 from '../../assets/man3.jpg';
 import girl1 from '../../assets/girl1.jpg';
 import './About.css';
+import { useNavigate } from 'react-router-dom';
 
 const About: React.FC = () => {
   const { isDark } = useTheme();
   const themeClass = isDark ? "dark" : "light";
+  const navigate = useNavigate();
 
   return (
     <div className="about-content">
@@ -98,7 +100,7 @@ const About: React.FC = () => {
     <strong>Ready to begin?</strong> Click below to start your adventure!  
 </p>
 
-        <button className="btn btn-primary">🎮 Start Now</button>
+        <button className="btn btn-primary" onClick={() => navigate('/learning/privacy')}>🎮 Start Now</button>
       </div>
     </div>
   );

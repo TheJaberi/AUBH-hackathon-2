@@ -30,15 +30,10 @@ export const BiasQuestions = [
   
 export const  ManipulationQuestions = [
   {
-    1: 'https://avatars.githubusercontent.com/u/132362556?v=4',
-    2: 'https://avatars.githubusercontent.com/u/151864110?v=4',
+    1: 'https://i.postimg.cc/jdRhpzpg/man6.png',
+    2: 'https://i.postimg.cc/T1JJywDJ/man5.jpg',
     AiGenerated: 1,
-    Reason: 'The AI is trying to manipulate you into thinking that the first image is the correct one, but it is not. The second image is the correct one.',
-  }, {
-    1: 'https://avatars.githubusercontent.com/u/151864110?v=4',
-    2: 'https://avatars.githubusercontent.com/u/132362556?v=4',
-    AiGenerated: 2,
-    Reason: 'The AI is trying to manipulate you into thinking that the second image is the correct one, but it is not. The first image is the correct one.',
+    Reason: 'Ancient Egyptians did not use the english alphabet, so the first image is AI-generated.',
   }
 
 ];

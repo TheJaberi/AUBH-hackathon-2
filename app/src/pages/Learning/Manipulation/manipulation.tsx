@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AlertModal } from '../../../components/alert/Alert';
 import { useNavigate } from 'react-router-dom';
 import { ManipulationQuestions } from '../../../questions/questions';
+import Confetti from 'react-confetti';
 
 const ManipulationFlow: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,15 +10,17 @@ const ManipulationFlow: React.FC = () => {
   const [alertType, setAlertType] = useState<'success' | 'error' | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [showedInfo, setShowedInfo] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
   const [cardContent] = useState('Be mindful about the information you encounter. Always question the source and authenticity, especially when dealing with AI-generated content. Critical thinking is your best tool against manipulation.');
-  const navigate = useNavigate();
+  
 
   const goNext = () => {
     if (currentIndex < ManipulationQuestions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      console.log("Module completed. Navigate to the next module.");
-      navigate('/learning/next-module'); // Update the path to the next module if needed
+      console.log("Hurray you finished all modules!!");
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 3000);
     }
   };
 
@@ -25,17 +28,32 @@ const ManipulationFlow: React.FC = () => {
     const currentQuestion = ManipulationQuestions[currentIndex];
     // Open the alert modal for feedback
     setIsOpen(true);
-    if (currentQuestion.AiGenerated === selected) {
-      setAlertMessage(`Correct answer - ${currentQuestion.Reason}`);
-      setAlertType('success');
+    if (currentIndex === ManipulationQuestions.length - 1) {
+      if (currentQuestion.AiGenerated === selected) {
+        setAlertMessage(
+          `Correct answer - ${currentQuestion.Reason}. You completed the module Manipulation, click Go Next to go to the next module`
+        );
+        setAlertType('success');
+      } else {
+        setAlertMessage(
+          `Incorrect answer - ${currentQuestion.Reason}. You completed the module Manipulation, click Go Next to go to the next module`
+        );
+        setAlertType('error');
+      }
     } else {
-      setAlertMessage(`Incorrect answer - ${currentQuestion.Reason}`);
-      setAlertType('error');
+      if (currentQuestion.AiGenerated === selected) {
+        setAlertMessage(`Correct answer - ${currentQuestion.Reason}`);
+        setAlertType('success');
+      } else {
+        setAlertMessage(`Incorrect answer - ${currentQuestion.Reason}`);
+        setAlertType('error');
+      }
     }
   };
 
   return (
     <>
+      {showConfetti && <Confetti />}
       {!showedInfo && (
         <AlertModal
           isOpen={true}
@@ -55,12 +73,14 @@ const ManipulationFlow: React.FC = () => {
             alt="Image 1"
             className="w-1/2 cursor-pointer"
             onClick={() => checkAnswer(1)}
+            style={{ animation: alertType === 'error' ? 'shake 0.5s' : 'none' }}
           />
           <img
             src={ManipulationQuestions[currentIndex][2]}
             alt="Image 2"
             className="w-1/2 cursor-pointer"
             onClick={() => checkAnswer(2)}
+            style={{ animation: alertType === 'error' ? 'shake 0.5s' : 'none' }}
           />
         </div>
         {alertMessage && alertType && (
