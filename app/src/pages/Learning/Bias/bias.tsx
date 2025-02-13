@@ -10,6 +10,7 @@ const BiasFlow: React.FC = () => {
   const [username, setUserName] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isFirstClick, setIsFirstClick] = useState(true);
+  const [showedInfo, setShowedInfo] = useState(false);
 
   useEffect(() => {
     setUserName(localStorage.getItem('userName'));
@@ -32,7 +33,6 @@ const BiasFlow: React.FC = () => {
   };
 
   const checkAnswer = (selected: string) => {
-    console.log("we selected", selected)
     if (isFirstClick) {
       setIsFirstClick(false);
     }
@@ -58,6 +58,18 @@ const BiasFlow: React.FC = () => {
         );
         setAlertType('error');
       }
+
+      return (
+        alertMessage && alertType && (
+          <AlertModal
+            isOpen={isOpen}
+            onClose={() => { setIsOpen(false); setAlertMessage(null); setAlertType(null); goNext(); }}
+            type={alertType}
+            message={alertMessage}
+            btnText={currentIndex === BiasQuestions.length - 1 ? "Go Next" : "Close"} />
+        )
+      );
+
     } else if (currentQuestion.solution.toLowerCase() === selected.toLowerCase()) {
       setAlertMessage(`Correct answer - ${currentQuestion.reason}`);
       setAlertType('success');
@@ -67,24 +79,39 @@ const BiasFlow: React.FC = () => {
     }
   };
 
+  const [cardContent] = useState('AI is smart, but it can sometimes be unfair. It learns from data, and if that data has mistakes or unfair ideas, AI might repeat them. Always think for yourself and ask questions!');
   return (
-    <div className="p-4">
-      <ClaudeInputWithOutput
-        username={username || "Guest"}
-        prompt={BiasQuestions[currentIndex].prompt}
-        response={BiasQuestions[currentIndex].response}
-        checkAnswer={checkAnswer}
-        isFirstClick={isFirstClick}
-      />
-      {alertMessage && alertType && (
+    <>
+      {!showedInfo && (
         <AlertModal
-          isOpen={isOpen}
-          onClose={() => { setIsOpen(false); setAlertMessage(null); setAlertType(null); goNext(); }}
-          type="success"
-          message="Operation completed successfully!"
-          btnText={currentIndex === BiasQuestions.length - 1 ? "Go Next" : "Close"} />
+          isOpen={true}
+          onClose={() => setShowedInfo(true)}
+          type="info"
+          message={cardContent}
+          btnText="Close" />
       )}
-    </div>
+
+      <p className="text-center text-base font-semibold text-purple-600 !my-4 !p-2 bg-gray-800 rounded-lg shadow-md w-4/5 !mx-auto">
+        Let's learn about Bias! Send the AI prompt then decide if the response is biased or not.
+      </p>
+      <div className="p-4">
+        <ClaudeInputWithOutput
+          username={username || "Guest"}
+          prompt={BiasQuestions[currentIndex].prompt}
+          response={BiasQuestions[currentIndex].response}
+          checkAnswer={checkAnswer}
+          isFirstClick={isFirstClick}
+        />
+        {alertMessage && alertType && (
+          <AlertModal
+            isOpen={isOpen}
+            onClose={() => { setIsOpen(false); setAlertMessage(null); setAlertType(null); goNext(); }}
+            type={alertType}
+            message={alertMessage}
+            btnText={currentIndex === BiasQuestions.length - 1 ? "Go Next" : "Close"} />
+        )}
+      </div>
+    </>
   );
 };
 

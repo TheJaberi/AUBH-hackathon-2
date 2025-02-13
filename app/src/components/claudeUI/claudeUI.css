@@ -181,12 +181,12 @@ h1 {
 .chat-row {
     display: flex;
     align-items: center;
-  }
-  
-  .user-avatar {
+}
+
+.user-avatar {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 100%;
     background-color: #4A5568;
     color: white;
     display: flex;
@@ -194,11 +194,11 @@ h1 {
     align-items: center;
     font-size: 1.2rem;
     margin-right: 1rem;
-  }
-  
-  .user-message {
+}
+
+.user-message {
     background-color: black;
     padding: 0.5rem 1rem;
     border-radius: 8px;
     font-size: 1rem;
-  }
+}

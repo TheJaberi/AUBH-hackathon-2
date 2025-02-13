@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IconLucideArrowUp } from '../arrowUp/arrowUp';
-import { X } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 
 interface ClaudeInputProps {
     username: string;
@@ -61,14 +61,14 @@ export const ClaudeInputWithOutput: React.FC<ClaudeInputProps> = ({
                         <div className="user-avatar">
                             {username.charAt(0)}
                         </div>
-                        <div className="claude-input">
+                        <div className="claude-input !mt-4">
                             {prompt}
                         </div>
                     </div>
                     <div className="chat-row claude-ai-chat-container">
                         {!isFirstClick && (
                             <div 
-                                className={`claude-ai-input transform transition-all duration-300 ease-out
+                                className={`claude-ai-input transform transition-all duration-300 ease-out !mb-4
                                     ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}
                                 `}
                             >
@@ -83,18 +83,18 @@ export const ClaudeInputWithOutput: React.FC<ClaudeInputProps> = ({
                         <div className="style-selector flex flex-row">
                             <button 
                                 className="style-button"
-                                onClick={() => handleCheckAnswer(isFirstClick ? '' : 'safe')}
+                                onClick={() => handleCheckAnswer(isFirstClick ? '' : 'biased')}
                             >
-                                {isFirstClick ? "Send" : "Biased"}
-                                <IconLucideArrowUp />
+                                {isFirstClick ? (<><span>Send</span> <IconLucideArrowUp/></>) : (<><span>Biased</span> <Check /></>)}
+                                
                             </button>
-                            <button 
+                            {!isFirstClick && <button 
                                 className="style-button"
-                                onClick={() => checkAnswer(isFirstClick ? '' : 'unsafe')}
+                                onClick={() => checkAnswer(isFirstClick ? '' : 'unbiased')}
                             >
-                                {isFirstClick ? "Reject" : "Not Biased"}
+                                "Not Biased"
                                 <X />
-                            </button>
+                            </button>}
                         </div>
                     </div>
                 </div>
