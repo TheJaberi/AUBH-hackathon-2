@@ -127,7 +127,7 @@ class Showcase {
 
     // Handle window resize and clicks
     window.addEventListener('resize', this.onWindowResize.bind(this));
-    this.container.addEventListener('click', this.onClick.bind(this));
+    this.renderer.domElement.addEventListener('click', this.onClick.bind(this));
 
     // Start animation loop
     this.animate();
@@ -135,33 +135,71 @@ class Showcase {
 
   updateCameraPosition(target) {
     const isMobile = window.innerWidth <= 768;
+    const currentPos = this.camera.position.clone();
+    const currentTarget = new THREE.Vector3(0, 0.4, 0);
+    
     if (target) {
       // Zoom to model
-      const offset = new THREE.Vector3(0, 1, 3);
-      this.camera.position.copy(target.position).add(offset);
-      this.camera.lookAt(target.position);
+      const offset = new THREE.Vector3(0, 0.8, 2);
+      const newPos = target.position.clone().add(offset);
+      this.animateCamera(currentPos, newPos, target.position);
     } else {
       // Reset to default view
-      if (isMobile) {
-        this.camera.position.set(0, 4, 6);
-      } else {
-        this.camera.position.copy(this.defaultCameraPosition);
-      }
-      this.camera.lookAt(0, 0.4, 0);
+      const defaultPos = isMobile ? 
+        new THREE.Vector3(0, 4, 6) : 
+        this.defaultCameraPosition.clone();
+      this.animateCamera(currentPos, defaultPos, currentTarget);
     }
   }
 
+  animateCamera(startPos, endPos, lookAt) {
+    const duration = 1000; // 1 second
+    const startTime = Date.now();
+    
+    const animate = () => {
+      const now = Date.now();
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Ease in-out function
+      const eased = progress < 0.5 ? 
+        2 * progress * progress : 
+        -1 + (4 - 2 * progress) * progress;
+      
+      // Interpolate position
+      this.camera.position.lerpVectors(startPos, endPos, eased);
+      this.camera.lookAt(lookAt);
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+    
+    animate();
+  }
+
   onClick(event) {
+    console.log('Canvas clicked', event);
     // Calculate mouse position in normalized device coordinates
-    const rect = this.container.getBoundingClientRect();
+    const rect = this.renderer.domElement.getBoundingClientRect();
     this.mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
     this.mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
     // Update the picking ray with the camera and mouse position
     this.raycaster.setFromCamera(this.mouse, this.camera);
 
+    // Get all meshes from models for intersection testing
+    const meshes = [];
+    this.models.forEach(model => {
+      model.traverse(child => {
+        if (child.isMesh) {
+          meshes.push(child);
+        }
+      });
+    });
+
     // Calculate objects intersecting the picking ray
-    const intersects = this.raycaster.intersectObjects(this.models, true);
+    const intersects = this.raycaster.intersectObjects(meshes, false);
 
     if (intersects.length > 0 && !this.selectedModel) {
       // Find the root model object
@@ -169,8 +207,11 @@ class Showcase {
       while (modelRoot.parent && !this.models.includes(modelRoot)) {
         modelRoot = modelRoot.parent;
       }
-      this.selectedModel = modelRoot;
-      this.updateCameraPosition(modelRoot);
+      if (this.models.includes(modelRoot)) {
+        console.log('Model clicked:', modelRoot);
+        this.selectedModel = modelRoot;
+        this.updateCameraPosition(modelRoot);
+      }
     } else {
       // Reset view
       this.selectedModel = null;
@@ -299,6 +340,7 @@ class Showcase {
   dispose() {
     window.removeEventListener('resize', this.onWindowResize.bind(this));
     this.container.removeEventListener('click', this.onClick.bind(this));
+    this.renderer.domElement.removeEventListener('click', this.onClick.bind(this));
     this.renderer.dispose();
   }
 }
