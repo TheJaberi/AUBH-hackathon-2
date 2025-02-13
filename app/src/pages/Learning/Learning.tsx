@@ -1,42 +1,56 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import NameInput from '../../components/NameInput/NameInput';
 import './Learning.css';
+import Privacy from '../../assets/privacy.webp';
+import Bias from '../../assets/bias.webp';
+import Manipulation from '../../assets/manipulation.webp';
+import CaseStudy from '../../assets/caseStudies.webp';
 
 const learningPaths = [
   {
-    title: 'AI Fundamentals',
+    title: 'Privacy',
     level: 'Beginner',
     duration: '8 weeks',
     topics: ['Introduction to AI', 'Machine Learning Basics', 'Neural Networks', 'Python for AI'],
-    icon: '🤖'
+    icon: '🤖',
+    image: Privacy,
+    completion: 75 // Example completion percentage
   },
   {
-    title: 'Machine Learning Specialist',
+    title: 'Bias',
     level: 'Intermediate',
     duration: '12 weeks',
     topics: ['Advanced ML Algorithms', 'Deep Learning', 'Computer Vision', 'NLP'],
-    icon: '🧠'
+    icon: '🧠',
+    image: Bias,
+    completion: 50 // Example completion percentage
   },
   {
-    title: 'AI Applications',
+    title: 'Manipulation',
     level: 'Advanced',
     duration: '10 weeks',
     topics: ['AI in Business', 'AI Ethics', 'Project Development', 'Deployment'],
-    icon: '🚀'
+    icon: '🚀',
+    image: Manipulation,
+    completion: 30 // Example completion percentage
   },
   {
-    title: 'Data Science for AI',
+    title: 'Case Study',
     level: 'Intermediate',
     duration: '10 weeks',
     topics: ['Data Analysis', 'Statistics', 'Data Visualization', 'Big Data'],
-    icon: '📊'
+    icon: '📊',
+    image: CaseStudy,
+    completion: 90 // Example completion percentage
   }
 ];
 
 const Learning: React.FC = () => {
   const { isDark } = useTheme();
   const [userName, setUserName] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedName = localStorage.getItem('userName');
@@ -55,47 +69,23 @@ const Learning: React.FC = () => {
   }
 
   return (
-    <div className="learning-content">
-      <h1>Learning Paths</h1>
-      <p className={`description ${isDark ? 'dark' : 'light'}`}>
-        Choose your AI learning journey from our carefully crafted paths. Each path is designed 
-        to take you from concept to mastery with hands-on projects and expert guidance.
+    <>
+      <p className="text-center text-base font-semibold text-purple-600 !my-4 !p-2 bg-gray-800 rounded-lg shadow-md w-4/5 !mx-auto">
+        Welcome to the AI Journey! Choose a learning path to continue.
       </p>
-
-      <div className="path-grid">
+      <div className="learning-container">
         {learningPaths.map((path, index) => (
-          <div key={index} className={`path-card ${isDark ? 'dark' : 'light'}`}>
-            <div className="path-icon">{path.icon}</div>
-            <h2>{path.title}</h2>
-            <div className="path-details">
-              <span className="level">Level: {path.level}</span>
-              <span className="duration">Duration: {path.duration}</span>
-            </div>
-            <div className="topics">
-              <h3>What you'll learn:</h3>
-              <ul>
-                {path.topics.map((topic, topicIndex) => (
-                  <li key={topicIndex}>{topic}</li>
-                ))}
-              </ul>
-            </div>
-            <button className="btn btn-primary">Start Learning</button>
+          <div
+            key={index}
+            className={`path-card ${isDark ? 'dark' : 'light'}`}
+            onClick={() => navigate(`/learning/${path.title.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`)}
+          >
+            <img src={path.image} alt={path.title} />
+            <div className="completion-circle">{path.title}</div>
           </div>
         ))}
       </div>
-
-      <div className={`cta-section ${isDark ? 'dark' : 'light'}`}>
-        <h2>Ready to Begin Your AI Journey?</h2>
-        <p>
-          Our learning paths are designed to help you achieve your goals, whether you're 
-          starting from scratch or looking to specialize in a specific area of AI.
-        </p>
-        <div className="button-group">
-          <button className="btn btn-primary">View All Paths</button>
-          <button className={`btn btn-secondary ${isDark ? 'dark' : 'light'}`}>Get Advice</button>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

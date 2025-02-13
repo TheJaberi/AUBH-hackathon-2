@@ -23,10 +23,10 @@ const ShowcaseComponent: React.FC = () => {
   }, []);
 
   return (
-    <div 
-      ref={containerRef} 
-      className="showcase-container"
-    />
+    <div className="showcase-wrapper">
+      <h1 className="showcase-header">How AI sees these concepts</h1>
+      <div ref={containerRef} className="showcase-container" />
+    </div>
   );
 };
 

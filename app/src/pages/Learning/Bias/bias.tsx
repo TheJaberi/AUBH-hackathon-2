@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ClaudeInputWithOutput } from '../../../components/claudeUI/claudeUI2';
 import { BiasQuestions } from '../../../questions/questions';
 import { AlertModal } from '../../../components/alert/Alert';
+import { useNavigate } from 'react-router-dom';
 
 const BiasFlow: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,6 +12,8 @@ const BiasFlow: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isFirstClick, setIsFirstClick] = useState(true);
   const [showedInfo, setShowedInfo] = useState(false);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     setUserName(localStorage.getItem('userName'));
@@ -29,6 +32,7 @@ const BiasFlow: React.FC = () => {
       setCurrentIndex(currentIndex + 1);
     } else {
       console.log("Module completed. Navigate to the next module.");
+      navigate('/learning/manipulation');
     }
   };
 
@@ -49,12 +53,14 @@ const BiasFlow: React.FC = () => {
     if (currentIndex === BiasQuestions.length - 1) {
       if (currentQuestion.solution.toLowerCase() === selected.toLowerCase()) {
         setAlertMessage(
-          `Correct answer - ${currentQuestion.reason}. You completed the module Bias, click Go Next to go to the next module`
+          `You are correct! the reason is ${currentQuestion.reason}. Good Job! you are an expert in this field! Go next to learn about Manipulating!`
+
         );
         setAlertType('success');
       } else {
         setAlertMessage(
-          `Incorrect answer - ${currentQuestion.reason}. You completed the module Bias, click Go Next to go to the next module`
+          `Sadly your answer was incorrect :( the reason is ${currentQuestion.reason}. Go next to learn about Manipulating!`
+
         );
         setAlertType('error');
       }

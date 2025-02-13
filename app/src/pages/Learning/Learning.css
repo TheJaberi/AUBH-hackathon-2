@@ -1,200 +1,93 @@
-.learning-content {
-  max-width: 1200px;
+.learning-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 2rem;
-}
-
-.learning-content .claude-container {
-  margin-bottom: 2rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.learning-content .learning-content h1 {
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  margin-top: 2rem;
-}
-
-.description {
-  text-align: center;
-  font-size: 1.2rem;
-  max-width: 800px;
-  margin: 0 auto 4rem;
-  line-height: 1.6;
-}
-
-.description.dark {
-  color: #94a3b8;
-}
-
-.description.light {
-  color: #64748b;
-}
-
-.path-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
 }
 
 .path-card {
-  padding: 2rem;
-  border-radius: 1rem;
-  transition: all 0.3s ease;
-}
-
-.path-card.dark {
-  background-color: #162036;
-  color: #f8fafc;
-}
-
-.path-card.light {
-  background-color: white;
-  color: #1e293b;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  width: 50%;
+  position: relative;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .path-card:hover {
-  transform: translateY(-5px);
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.path-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.path-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.path-card h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #38bdf8;
+.path-card:hover img {
+  transform: scale(1.1);
 }
 
-.path-details {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-}
-
-.path-details span {
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  background-color: rgba(56, 189, 248, 0.1);
-  color: #38bdf8;
-}
-
-.topics h3 {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  color: #38bdf8;
-}
-
-.topics ul {
-  list-style: none;
-  padding: 0;
-}
-
-.topics li {
-  margin-bottom: 0.5rem;
-  padding-left: 1.5rem;
-  position: relative;
-}
-
-.topics li::before {
-  content: "•";
+.completion-circle {
   position: absolute;
-  left: 0;
-  color: #38bdf8;
-}
-
-.cta-section {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  padding: 10px 20px;
+  font-size: 1.5rem;
   text-align: center;
-  padding: 3rem;
-  border-radius: 1rem;
-  margin-top: 4rem;
 }
 
-.cta-section.dark {
-  background-color: #162036;
-}
-
-.cta-section.light {
-  background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.cta-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #38bdf8;
-}
-
-.cta-section p {
-  font-size: 1.1rem;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  line-height: 1.6;
-}
-
-.button-group {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.btn {
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  font-size: 1rem;
-}
-
-.btn-primary {
-  background-color: #38bdf8;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #0ea5e9;
-}
-
-.btn-secondary.dark {
-  background-color: transparent;
-  color: white;
-  border: 2px solid #38bdf8;
-}
-
-.btn-secondary.light {
-  background-color: transparent;
-  color: #1e293b;
-  border: 2px solid #38bdf8;
-}
-
-.btn-secondary:hover {
-  background-color: rgba(56, 189, 248, 0.1);
-}
-
-@media (max-width: 768px) {
-  .learning-content h1 {
-    font-size: 2.5rem;
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+  .path-card {
+    width: 100%;
   }
-
-  .path-grid {
-    grid-template-columns: 1fr;
+  .image-full-width {
+    width: 100% !important;
   }
-
-  .cta-section h2 {
-    font-size: 1.75rem;
+  .image-full-width-container {
+    flex-wrap: wrap;
   }
+}
 
-  .button-group {
-    flex-direction: column;
+/* Keyframes for animations */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
   }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
+}
+
+/* Apply animations */
+.path-card:hover {
+  animation: bounce 1s;
+}
+
+.path-card:active {
+  animation: shake 0.5s;
 }

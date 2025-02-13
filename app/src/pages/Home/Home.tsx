@@ -15,6 +15,7 @@ import girl1 from '../../assets/girl1.jpg';
 import './Home.css';
 import './animations.css';
 import AnimatedBackground from '../../components/BackgroundAnimations/AnimatedBackground';
+import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const { isDark } = useTheme();
@@ -36,23 +37,24 @@ const Home: React.FC = () => {
     { title: 'Reem Alhalwachi', description: '' }
   ];
 
+  const navigate = useNavigate();
+
   return (
     <div className="home-main-content">
       {showCoolBackground && <AnimatedBackground isDark={isDark} />}
       <Fly isDark={isDark} />
 
+
       {/* Hero Section */}
       <section className="hero-section">
+              <div className="navbar-title">GenRes</div>
         <div className={`content-wrap ${!isDark ? 'light' : ''}`}>
           <p className={`home-subtitle ${isDark ? 'dark' : 'light'}`}>
             Discover the fascinating world of artificial intelligence through our interactive learning platform.
           </p>
 
           <div className="home-button-group">
-            <button className="home-btn home-btn-primary">
-              Get Started
-            </button>
-            <button className={`home-btn home-btn-secondary ${!isDark ? 'light' : ''}`}>
+            <button className="home-btn home-btn-primary" onClick={() => navigate('/learning/privacy')}>
               Learn More
             </button>
             <button 
@@ -195,7 +197,7 @@ const Home: React.FC = () => {
           <p className={`cta-description ${!isDark ? 'light' : ''}`}>
             Join thousands of learners who have already transformed their understanding of AI.
           </p>
-          <button className="cta-button">
+          <button className="cta-button" onClick={() => navigate('/learning/privacy')}>
             Start Your Journey
           </button>
         </div>
