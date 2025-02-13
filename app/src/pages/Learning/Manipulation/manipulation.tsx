@@ -12,7 +12,7 @@ const ManipulationFlow: React.FC = () => {
   const [showedInfo, setShowedInfo] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [cardContent] = useState('Be mindful about the information you encounter. Always question the source and authenticity, especially when dealing with AI-generated content. Critical thinking is your best tool against manipulation.');
-  
+
 
   const goNext = () => {
     if (currentIndex < ManipulationQuestions.length - 1) {
@@ -67,18 +67,18 @@ const ManipulationFlow: React.FC = () => {
         Click on the image you think is AI-generated ;)
       </p>
       <div className="text-center text-base font-semibold text-purple-600 !my-4 !p-2 bg-gray-800 rounded-lg shadow-md w-4/5 !mx-auto">
-        <div className="flex justify-center space-x-4">
+        <div className="flex justify-center space-x-4 image-full-width-container">
           <img
             src={ManipulationQuestions[currentIndex][1]}
             alt="Image 1"
-            className="w-1/2 cursor-pointer"
+            className="w-1/2 cursor-pointer image-full-width"
             onClick={() => checkAnswer(1)}
             style={{ animation: alertType === 'error' ? 'shake 0.5s' : 'none' }}
           />
           <img
             src={ManipulationQuestions[currentIndex][2]}
             alt="Image 2"
-            className="w-1/2 cursor-pointer"
+            className="w-1/2 cursor-pointer image-full-width"
             onClick={() => checkAnswer(2)}
             style={{ animation: alertType === 'error' ? 'shake 0.5s' : 'none' }}
           />
