@@ -54,10 +54,7 @@ const Home: React.FC = () => {
           </p>
 
           <div className="home-button-group">
-            <button className="home-btn home-btn-primary">
-              Get Started
-            </button>
-            <button className={`home-btn home-btn-secondary ${!isDark ? 'light' : ''}`}>
+            <button className="home-btn home-btn-primary" onClick={() => navigate('/learning/privacy')}>
               Learn More
             </button>
             <button 
