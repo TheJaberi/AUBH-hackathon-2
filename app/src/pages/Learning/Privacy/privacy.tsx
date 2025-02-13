@@ -36,12 +36,12 @@ const PrivacyFlow: React.FC = () => {
     if (currentIndex === PrivacyQuestions.length - 1) {
       if (currentQuestion.solution.toLowerCase() === selected.toLowerCase()) {
         setAlertMessage(
-          `You are correct! the reason is ${currentQuestion.reason}. Good Job! you are an expert in this field! Go next to learn about Bias!`
+          `You are correct! the reason is ${currentQuestion.reason}. \n\n A better way to ask this question is: '${currentQuestion.alternativePrompt}' \n\nGood Job! you are an expert in this field! Go next to learn about Bias!`
         );
         setAlertType('success');
       } else {
         setAlertMessage(
-          `Sadly your answer was incorrect :( the reason is ${currentQuestion.reason}. Go next to learn about Bias!`
+          `Sadly your answer was incorrect :( the reason is ${currentQuestion.reason}. \n\n A better way to ask this question is: '${currentQuestion.alternativePrompt}' \n Go next to learn about Bias!`
         );
         setAlertType('error');
       }
@@ -58,10 +58,10 @@ const PrivacyFlow: React.FC = () => {
       );
 
     } else if (currentQuestion.solution.toLowerCase() === selected.toLowerCase()) {
-      setAlertMessage(`Correct answer - ${currentQuestion.reason}`);
+      setAlertMessage(`Correct answer - ${currentQuestion.reason} \n\n A better way to ask this question is: '${currentQuestion.alternativePrompt}'`);
       setAlertType('success');
     } else {
-      setAlertMessage(`Incorrect answer - ${currentQuestion.reason}`);
+      setAlertMessage(`Incorrect answer - ${currentQuestion.reason} \n\n A better way to ask this question is: '${currentQuestion.alternativePrompt}'`);
       setAlertType('error');
     }
   };

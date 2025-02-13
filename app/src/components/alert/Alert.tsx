@@ -1,4 +1,4 @@
-import type * as React from "react"
+import * as React from "react"
 import * as Dialog from "@radix-ui/react-dialog"
 import { AlertCircle, CheckCircle2, X } from "lucide-react"
 import { useTheme } from "../../context/ThemeContext"
@@ -29,7 +29,15 @@ export const AlertModal: React.FC<AlertModalProps> = ({ message, type, onClose, 
             )}
             {type === "success" ? "Success" : type === "error" ? "Error" : "Info"}
           </Dialog.Title>
-          <Dialog.Description className={`!mx-5 ${isDark ? '!text-gray-400' : '!text-gray-500'}`}>{message}</Dialog.Description>
+          <Dialog.Description className={`!mx-5 ${isDark ? '!text-gray-400' : '!text-gray-500'}`}>
+            {message.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+
+          </Dialog.Description>
           <div className="!m-4 !flex !justify-end">
             <button
               onClick={onClose}

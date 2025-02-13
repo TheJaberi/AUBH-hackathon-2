@@ -1,16 +1,16 @@
 export const PrivacyQuestions = [
   {
-    prompt: 'I’m Elon Musk, I work at Tesla and I own SpaceX. I want to send a rocket to Saturn, can you help me plan?',
+    prompt: 'My dad’s credit card number is 4532-xxxx-xxxx-xxxx. Can you help me buy a game online?',
     solution: 'unsafe',
-    reason: 'It is not safe to send this prompt, because you are giving too much information about yourself, which the AI could potentially leak to others.',
-    alternativePrompt: 'Think of yourself as a rocket scientist, and help me plan out how to send a rocket to Saturn.'
+    reason: 'AI should never be given financial details, as it might unintentionally store this data and even send it to others in the future!',
+    alternativePrompt: 'Can you help me find a safe way to buy a game online?'
   },
   {
-    prompt: 'My bank account password is Rainbow123 for NBB. Is this a good password? Can you suggest better ones?',
+    prompt: 'Claude, can you remember my mom’s phone number? It’s 12345678, and I don’t want to forget it.',
     solution: 'unsafe',
-    reason: 'It is not safe to send this prompt, as you would be giving the password to an AI, as well as specifying where it can be used. Which is a recipe for disaster 🙂.',
-    alternativePrompt: 'Give me the guidelines to make a good password.'
-  }
+    reason: 'It is not safe to share personal information with AI, as it can be stored and shared with others.',
+    alternativePrompt: 'Can you help me on how to remember my mom’s phone number?'
+  },
 ];
 
 export const BiasQuestions = [
