@@ -8,6 +8,8 @@ import Learning from './pages/Learning/Learning';
 import './App.css';
 import Privacy from './pages/Learning/Privacy/privacy';
 import Bias from './pages/Learning/Bias/bias';
+import NotFound from './pages/NotFound/NotFound';
+
 
 const App: React.FC = () => {
   return (
@@ -20,6 +22,7 @@ const App: React.FC = () => {
             <Route path="/learning" element={<Learning />} />
             <Route path ="/learning/privacy" element={<Privacy />} />
             <Route path ="/learning/bias" element={<Bias />} />
+            <Route path="*" element={<NotFound />} />
 
           </Routes>
         </MainLayout>
