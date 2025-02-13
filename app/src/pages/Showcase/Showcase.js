@@ -223,15 +223,15 @@ class Showcase {
     const isMobile = window.innerWidth <= 768;
     
     this.positions = isMobile ? [
-      [-1.5, 0.4, -1],
+      [-1.5, 0.6, -1],
       [1.5, 0.4, -1],
       [-1.5, 0.4, 1],
-      [1.5, 0.4, 1]
+      [1.5, 0.6, 1]
     ] : [
-      [-6, 0.4, 0],
+      [-6, 0.6, 0],
       [-2, 0.4, 0],
       [2, 0.4, 0],
-      [6, 0.4, 0]
+      [6, 0.6, 0]
     ];
 
     // Update existing models if they exist
@@ -280,7 +280,7 @@ class Showcase {
       (gltf) => {
         const model = gltf.scene;
         model.position.set(x, y, z);
-        model.scale.set(0.5, 0.5, 0.5);
+        model.scale.set(1, 1, 1);
         
         // Enable shadows for the model
         model.traverse((node) => {
