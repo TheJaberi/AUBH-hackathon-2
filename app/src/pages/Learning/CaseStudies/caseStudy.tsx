@@ -1,69 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './caseStudy.css';
 import { AlertModal } from '../../../components/alert/Alert';
 
-interface Slide {
-  title: string;
-  image: string;
-  alt: string;
-  description: string;
-  buttonText: string;
-  alertMessage: string;
-  alertType: "info";
-}
-
-const slides: Slide[] = [
-  {
-    title: "🎥 Deepfakes: The Tom Cruise TikTok Mystery 🕵️‍♀️",
-    image: "https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif",
-    alt: "Tom Cruise Deepfake",
-    description:
-      "In 2021, a magician named AI created fake videos of Tom Cruise that looked SO real, they fooled everyone on TikTok! 🎩✨ These videos are called deepfakes, and they show how AI can be used to trick people. Always double-check what you see online! 🧐",
-    buttonText: "👉 Click here if you can spot a deepfake!",
-    alertMessage: "You spotted the fake! 🎉",
-    alertType: "info"
-  },
-  {
-    title: "📰 Fake News Alert: The GPT-3 Guardian Article 🚨",
-    image: "https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif",
-    alt: "GPT-3 Guardian Article",
-    description:
-      "In 2020, a super-smart AI named GPT-3 wrote an entire article for The Guardian newspaper! 📜🤖 But wait—what if the news isn’t true? This story reminds us to always check our facts and trust reliable sources. 🕵️‍♂️",
-    buttonText: "👉 Click here to become a fact-checking detective!",
-    alertMessage: "You're a fact-checking pro! 🕶️",
-    alertType: "info"
-  },
-  {
-    title: "🕵️‍♂️ Privacy Breach: The Clearview AI Mystery 🕶️",
-    image: "https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif",
-    alt: "Clearview AI",
-    description:
-      "Clearview AI was a company that collected billions of photos from the internet without asking. 😱 This story teaches us how important it is to protect our privacy and be careful about what we share online. 🛡️",
-    buttonText: "👉 Click here to guard your privacy!",
-    alertMessage: "You're a privacy protector! 🛡️",
-    alertType: "info"
-  }
-];
-
 const CaseStudy: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
-  const [alertType, setAlertType] = useState<"info" | null>(null);
-
-  // Auto move carousel every 5 seconds.
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(intervalId);
-  }, []);
-
-  const handleButtonClick = (slide: Slide) => {
-    setIsOpen(true);
-    setAlertMessage(slide.alertMessage);
-    setAlertType(slide.alertType);
-  };
+  const [alertType, setAlertType] = useState<"success" | "error" | "info" | null>(null);
 
   return (
     <div className="case-study-container">
@@ -72,37 +14,67 @@ const CaseStudy: React.FC = () => {
         Hey there, future tech explorers! 🌟 AI is super cool, but sometimes it can be used in sneaky ways. Let’s dive into some real-world stories and learn how to spot the tricky stuff! 🕶️
       </p>
 
-      <div className="carousel">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`slide ${index === currentSlide ? "active" : "inactive"}`}
-          >
-            {index === currentSlide && (
-              <>
-                <h2>{slide.title}</h2>
-                <img src={slide.image} alt={slide.alt} className="case-image" />
-                <p>{slide.description}</p>
-                <button
-                  className="fun-button"
-                  onClick={() => handleButtonClick(slide)}
-                >
-                  {slide.buttonText}
-                </button>
-              </>
-            )}
-          </div>
-        ))}
+      <div className="case-card">
+        <h2>🎥 Deepfakes: The Tom Cruise TikTok Mystery 🕵️‍♀️</h2>
+        <img 
+          src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif" 
+          alt="Tom Cruise Deepfake" 
+          className="case-image"
+        />
+        <p>
+          In 2021, a magician named AI created fake videos of Tom Cruise that looked SO real, they fooled everyone on TikTok! 🎩✨ These videos are called <strong>deepfakes</strong>, and they show how AI can be used to trick people. Always double-check what you see online! 🧐
+        </p>
+        <button 
+          className="fun-button" 
+          onClick={() => { 
+            setIsOpen(true); 
+            setAlertMessage("You spotted the fake! 🎉"); 
+            setAlertType("info"); 
+          }}>
+          👉 Click here if you can spot a deepfake!
+        </button>
       </div>
 
-      <div className="pagination">
-        {slides.map((_, index) => (
-          <span
-            key={index}
-            className={`dot ${index === currentSlide ? "active" : ""}`}
-            onClick={() => setCurrentSlide(index)}
-          ></span>
-        ))}
+      <div className="case-card">
+        <h2>📰 Fake News Alert: The GPT-3 Guardian Article 🚨</h2>
+        <img 
+          src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif" 
+          alt="GPT-3 Guardian Article" 
+          className="case-image"
+        />
+        <p>
+          In 2020, a super-smart AI named GPT-3 wrote an entire article for The Guardian newspaper! 📜🤖 But wait—what if the news isn’t true? This story reminds us to always check our facts and trust reliable sources. 🕵️‍♂️
+        </p>
+        <button 
+          className="fun-button" 
+          onClick={() => { 
+            setIsOpen(true); 
+            setAlertMessage("You're a fact-checking pro! 🕶️"); 
+            setAlertType("info"); 
+          }}>
+          👉 Click here to become a fact-checking detective!
+        </button>
+      </div>
+
+      <div className="case-card">
+        <h2>🕵️‍♂️ Privacy Breach: The Clearview AI Mystery 🕶️</h2>
+        <img 
+          src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif" 
+          alt="Clearview AI" 
+          className="case-image"
+        />
+        <p>
+          Clearview AI was a company that collected billions of photos from the internet without asking. 😱 This story teaches us how important it is to protect our privacy and be careful about what we share online. 🛡️
+        </p>
+        <button 
+          className="fun-button" 
+          onClick={() => { 
+            setIsOpen(true); 
+            setAlertMessage("You're a privacy protector! 🛡️"); 
+            setAlertType("info"); 
+          }}>
+          👉 Click here to guard your privacy!
+        </button>
       </div>
 
       <h2 className="references-title">📚 References</h2>
@@ -116,10 +88,10 @@ const CaseStudy: React.FC = () => {
       {alertMessage && alertType && (
         <AlertModal
           isOpen={isOpen}
-          onClose={() => {
-            setIsOpen(false);
-            setAlertMessage(null);
-            setAlertType(null);
+          onClose={() => { 
+            setIsOpen(false); 
+            setAlertMessage(null); 
+            setAlertType(null); 
           }}
           type={alertType}
           message={alertMessage}
