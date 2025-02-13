@@ -20,28 +20,28 @@ const About: React.FC = () => {
             <img src={man1} alt="Team Member 1" />
             <div className="team-info">
               <h3>Sayed Hesham Hussain</h3>
-              <p>Role and description for team member 1.</p>
+              <p>Sayed played a key role in developing the games and challenges, ensuring an engaging and interactive learning experience. He also contributed to fixing HTML and CSS, enhancing the website’s functionality and design.</p>
             </div>
           </div>
           <div className={`team-card ${themeClass}`}>
             <img src={man2} alt="Team Member 2" />
             <div className="team-info">
               <h3>Adnan Jabri</h3>
-              <p>Role and description for team member 2.</p>
+              <p>Adnan contributed by generating videos, icons, and images, along with fixing styles to ensure a polished and cohesive design. His work enhanced both the functionality and aesthetics of the platform.</p>
             </div>
           </div>
           <div className={`team-card ${themeClass}`}>
             <img src={man3} alt="Team Member 3" />
             <div className="team-info">
               <h3>Yousif Jawad</h3>
-              <p>Role and description for team member 3.</p>
+              <p>Yousif focused on designing and improving the games and challenges, making AI ethics fun and immersive. Additionally, he worked on fixing HTML and CSS, refining the user interface for a seamless experience.</p>
             </div>
           </div>
           <div className={`team-card ${themeClass}`}>
             <img src={girl1} alt="Team Member 4" />
             <div className="team-info">
               <h3>Reem Alhalwachi</h3>
-              <p>Role and description for team member 4.</p>
+              <p>Reem specialized in generating icons and images using AI, as well as creating HTML and CSS elements to bring visual creativity to the platform.</p>
             </div>
           </div>
         </div>
