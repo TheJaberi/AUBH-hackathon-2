@@ -1,217 +1,11 @@
+/* Restore previous styles */
 .about-content {
   max-width: 1200px;
   margin: 0 auto;
   padding: 4rem 2rem;
 }
 
-.card-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 0.75rem;
-  text-align: center;
-}
-
-.card-content h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: #38bdf8;
-}
-
-.card-content p {
-  font-size: 0.875rem;
-  line-height: 1.4;
-  color: #1e293b;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card-square {
-  width: 150px;
-  height: 150px;
-}
-
-.card-rectangle {
-  width: 150px;
-  height: 75px;
-}
-
-.our-team-section h2 {
-  color: white;
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-}
-
-@media (max-width: 768px) {
-  .card-container {
-    grid-template-columns: 1fr;
-  }
-
-  .card-square,
-  .card-rectangle {
-    width: 100%;
-    height: auto;
-  }
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 1rem;
-  text-align: center;
-}
-
-.card-content h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: #38bdf8;
-}
-
-.card-content p {
-  font-size: 0.875rem;
-  line-height: 1.4;
-  color: #1e293b;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card-square {
-  width: 200px;
-  height: 200px;
-}
-
-.card-rectangle {
-  width: 200px;
-  height: 100px;
-}
-
-.our-team-section h2 {
-  color: white;
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-@media (max-width: 768px) {
-  .card-container {
-    grid-template-columns: 1fr;
-  }
-
-  .card-square,
-  .card-rectangle {
-    width: 100%;
-    height: auto;
-  }
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 1.5rem;
-  text-align: center;
-}
-
-.card-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #38bdf8;
-}
-
-.card-content p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #1e293b;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card-square {
-  width: 300px;
-  height: 300px;
-}
-
-.card-rectangle {
-  width: 300px;
-  height: 150px;
-}
-
-@media (max-width: 768px) {
-  .card-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card-square,
-  .card-rectangle {
-    width: 100%;
-    height: auto;
-  }
-}
-
-.about-content h1 {
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 3rem;
-}
-
+/* Restored "About AI Learning" sections */
 .about-section {
   margin-bottom: 4rem;
   padding: 2rem;
@@ -242,6 +36,7 @@
   margin-bottom: 1.5rem;
 }
 
+/* Features Grid */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -277,6 +72,7 @@
   margin-bottom: 0;
 }
 
+/* Buttons */
 .btn {
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
@@ -298,16 +94,97 @@
   background-color: #0ea5e9;
 }
 
+/* Updated Our Team Section (with Light/Dark mode support) */
+.our-team-section {
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.our-team-section.dark {
+  background-color: #162036; /* Dark Mode */
+  color: #f8fafc;
+}
+
+.our-team-section.light {
+  background-color: white; /* Light Mode */
+  color: #1e293b;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.our-team-section h2 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 2rem;
+}
+
+/* Team Container */
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Team Card */
+.team-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-card.dark {
+  background-color: #1e293b; /* Dark mode */
+  color: #f8fafc;
+}
+
+.team-card.light {
+  background-color: #f8fafc; /* Light mode */
+  color: #1e293b;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.team-info {
+  text-align: center;
+}
+
+.team-info h3 {
+  font-size: 1.2rem;
+  color: #38bdf8;
+  margin-bottom: 0.5rem;
+}
+
+.team-info p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .about-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .about-section h2 {
-    font-size: 1.75rem;
-  }
-
-  .features-grid {
+  .team-container {
     grid-template-columns: 1fr;
   }
 }
