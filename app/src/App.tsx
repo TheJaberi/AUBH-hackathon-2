@@ -10,6 +10,7 @@ import Privacy from './pages/Learning/Privacy/privacy';
 import Bias from './pages/Learning/Bias/bias';
 import ShowcaseComponent from './pages/Showcase/ShowcaseComponent';
 import ManipulationFlow from './pages/Learning/Manipulation/manipulation';
+import CaseStudy from './pages/Learning/CaseStudies/caseStudy';
 import NotFound from './pages/NotFound/NotFound';
 
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
             <Route path ="/learning/bias" element={<Bias />} />
             <Route path="/showcase" element={<ShowcaseComponent />} />
             <Route path="/learning/manipulation" element={<ManipulationFlow />} />
+            <Route path="/learning/case-study" element={<CaseStudy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </MainLayout>

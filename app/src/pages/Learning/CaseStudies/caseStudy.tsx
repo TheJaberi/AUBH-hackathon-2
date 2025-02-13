@@ -1,0 +1,68 @@
+import React from 'react';
+import './caseStudy.css';
+
+const CaseStudy: React.FC = () => {
+  return (
+    <div className="case-study-container">
+      <h1 className="title">🚀 AI Adventures: The Good, the Bad, and the Sneaky! 🕵️‍♂️</h1>
+      <p className="intro">
+        Hey there, future tech explorers! 🌟 AI is super cool, but sometimes it can be used in sneaky ways. Let’s dive into some real-world stories and learn how to spot the tricky stuff! 🕶️
+      </p>
+
+      <div className="case-card">
+        <h2>🎥 Deepfakes: The Tom Cruise TikTok Mystery 🕵️‍♀️</h2>
+        <img 
+          src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif" 
+          alt="Tom Cruise Deepfake" 
+          className="case-image"
+        />
+        <p>
+          In 2021, a magician named AI created fake videos of Tom Cruise that looked SO real, they fooled everyone on TikTok! 🎩✨ These videos are called <strong>deepfakes</strong>, and they show how AI can be used to trick people. Always double-check what you see online! 🧐
+        </p>
+        <button className="fun-button" onClick={() => alert("You spotted the fake! 🎉")}>
+          👉 Click here if you can spot a deepfake!
+        </button>
+      </div>
+
+      <div className="case-card">
+        <h2>📰 Fake News Alert: The GPT-3 Guardian Article 🚨</h2>
+        <img 
+          src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif" 
+          alt="GPT-3 Guardian Article" 
+          className="case-image"
+        />
+        <p>
+          In 2020, a super-smart AI named GPT-3 wrote an entire article for The Guardian newspaper! 📜🤖 But wait—what if the news isn’t true? This story reminds us to always check our facts and trust reliable sources. 🕵️‍♂️
+        </p>
+        <button className="fun-button" onClick={() => alert("You're a fact-checking pro! 🕶️")}>
+          👉 Click here to become a fact-checking detective!
+        </button>
+      </div>
+
+      <div className="case-card">
+        <h2>🕵️‍♂️ Privacy Breach: The Clearview AI Mystery 🕶️</h2>
+        <img 
+          src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/6620ec7544fa3849c3cb27fc_party_wumpus.gif" 
+          alt="Clearview AI" 
+          className="case-image"
+        />
+        <p>
+          Clearview AI was a company that collected billions of photos from the internet without asking. 😱 This story teaches us how important it is to protect our privacy and be careful about what we share online. 🛡️
+        </p>
+        <button className="fun-button" onClick={() => alert("You're a privacy protector! 🛡️")}>
+          👉 Click here to guard your privacy!
+        </button>
+      </div>
+
+      <h2 className="references-title">📚 References</h2>
+      <ol className="references-list">
+        <li>Curbing AI's Potential Dark Side: A Case Study on Regulating AI Misuse. Futurist Speaker.</li>
+        <li>Key AI Ethics Case Studies to Know for AI Ethics. Fiveable.</li>
+        <li>7 Examples of AI Misuse in Education. Inspera.</li>
+        <li>12 famous AI disasters. CIO.</li>
+      </ol>
+    </div>
+  );
+};
+
+export default CaseStudy;

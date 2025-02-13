@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { AlertModal } from '../../../components/alert/Alert';
-import { useNavigate } from 'react-router-dom';
 import { ManipulationQuestions } from '../../../questions/questions';
 import Confetti from 'react-confetti';
 
